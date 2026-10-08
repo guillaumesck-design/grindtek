@@ -25,6 +25,13 @@ voici un site internet que je souhaiterais entierement copié, l'objectif étant
 - Original OW SVG logo + favicon
 - Admin dashboard: login, list, status update, delete, filter, CSV export
 
+## Implemented (2026-10-08, iteration 3)
+- 4 languages FR / PT / ES / EN (`src/i18n/*.js`, LangProvider + LangSwitcher in nav & mobile menu). FR default; manual choice saved in localStorage (`ow_lang`); `<html lang>` updated
+- Auto language by IP via `GET /api/geo` (CF-IPCountry header, else ipwho.is → ipapi.co fallback, in-memory cache): FR→fr, PT→pt, ES→es, ZA→en, others→fr. Only runs when no saved choice
+- Everything translated: all sections, form, legal & privacy, PDF spec sheets (locale-aware number formatting)
+- Prospect acknowledgement email in the visitor's language (fixed template, no echo of user free text, reply-to contact@overkkast.com), max 1 per address / 24 h; anti-abuse: honeypot field + 5 quotes / IP / hour (TTL collection `quote_rate`)
+- Quote stores `lang`; shown in admin table and team alert
+
 ## Implemented (2026-10-08, iteration 2)
 - Instant email alert on each new quote (Emergent-managed Resend, `backend/email_service.py`), recipients from `QUOTE_ALERT_EMAILS` (contact@overkkast.com), sent in background, link to SITE_URL/admin
 - Branded A4 PDF spec sheet per GV machine (client-side jsPDF, `src/lib/specPdf.js`): specs, photo, key results, 6 advantages, OW contact block. Buttons in catalogue + GV 230 section
@@ -37,6 +44,7 @@ voici un site internet que je souhaiterais entierement copié, l'objectif étant
 - Photos still show AW branding (user will replace)
 
 ## Backlog
-- P1: Confirmation email to the prospect after submission
+- P1: Confirmation email to the prospect after submission (done in iteration 3)
+- P2: Map Brazil (BR) to PT if desired; translated SEO meta per language
 - P1: Replace images/logo with OW-branded assets
 - P2: Downloadable PDF spec sheets per machine; EN/DE versions; SEO meta per section

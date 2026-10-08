@@ -17,7 +17,9 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel, BeforeValidator, ConfigDict, EmailStr, Field
 from starlette.middleware.cors import CORSMiddleware
 
-from email_service import notify_new_quote
+from email_service import notify_new_quote, send_quote_ack
+import httpx
+import ipaddress
 
 client = AsyncIOMotorClient(os.environ['MONGO_URL'])
 db = client[os.environ['DB_NAME']]
@@ -55,6 +57,8 @@ class QuoteIn(BaseModel):
     machine: Optional[MachineId] = None
     message: Optional[str] = Field(default=None, max_length=2000)
     consent: bool
+    lang: Literal["fr", "pt", "es", "en"] = "fr"
+    website: Optional[str] = None
 
 
 class Quote(BaseDocument):
@@ -66,6 +70,7 @@ class Quote(BaseDocument):
     machine: Optional[str] = None
     message: Optional[str] = None
     status: Status = "nouveau"
+    lang: str = "fr"
     created_at: str
 
 
@@ -124,13 +129,72 @@ async def root():
     return {"message": "OW Auto Grinding API"}
 
 
+def client_ip(request: Request) -> str:
+    fwd = request.headers.get("x-forwarded-for", "")
+    return (fwd.split(",")[0].strip() if fwd else "") or (request.client.host if request.client else "")
+
+
+COUNTRY_LANG = {"FR": "fr", "PT": "pt", "ES": "es", "ZA": "en"}
+_geo_cache: dict = {}
+
+
+async def lookup_country(ip: str) -> Optional[str]:
+    try:
+        if not ip or not ipaddress.ip_address(ip).is_global:
+            return None
+    except ValueError:
+        return None
+    if ip in _geo_cache:
+        return _geo_cache[ip]
+    country = None
+    async with httpx.AsyncClient(timeout=4) as hc:
+        try:
+            r = await hc.get(f"https://ipwho.is/{ip}", params={"fields": "success,country_code"})
+            d = r.json()
+            country = d.get("country_code") if d.get("success") else None
+        except Exception:
+            country = None
+        if not country:
+            try:
+                r = await hc.get(f"https://ipapi.co/{ip}/country/")
+                txt = r.text.strip()
+                country = txt if r.status_code == 200 and len(txt) == 2 else None
+            except Exception:
+                country = None
+    if len(_geo_cache) > 5000:
+        _geo_cache.clear()
+    _geo_cache[ip] = country
+    return country
+
+
+@api.get("/geo")
+async def geo(request: Request):
+    country = request.headers.get("cf-ipcountry") or await lookup_country(client_ip(request))
+    country = (country or "").upper() or None
+    return {"country": country, "lang": COUNTRY_LANG.get(country or "", "fr")}
+
+
 @api.post("/quotes", status_code=201)
-async def create_quote(body: QuoteIn, background: BackgroundTasks):
+async def create_quote(body: QuoteIn, request: Request, background: BackgroundTasks):
+    if body.website:
+        return {"id": None, "ok": True}
     if not body.consent:
         raise HTTPException(400, "Le consentement est requis")
-    q = Quote(**body.model_dump(exclude={"consent"}), created_at=datetime.now(timezone.utc).isoformat())
+    now = datetime.now(timezone.utc)
+    ip = client_ip(request)
+    if await db.quote_rate.count_documents({"ip": ip, "at": {"$gte": now - timedelta(hours=1)}}) >= 5:
+        raise HTTPException(429, "Trop de demandes. Réessayez plus tard.")
+    await db.quote_rate.insert_one({"ip": ip, "at": now})
+    email = body.email.lower()
+    since = (now - timedelta(hours=24)).isoformat()
+    first_today = await db.quotes.count_documents({"email": email, "created_at": {"$gte": since}}) == 0
+    data = body.model_dump(exclude={"consent", "website"})
+    data["email"] = email
+    q = Quote(**data, created_at=now.isoformat())
     res = await db.quotes.insert_one(q.to_mongo())
     background.add_task(notify_new_quote, q.model_dump(exclude={"id"}))
+    if first_today:
+        background.add_task(send_quote_ack, q.model_dump(exclude={"id"}))
     return {"id": str(res.inserted_id), "ok": True}
 
 
@@ -216,6 +280,7 @@ async def refresh(request: Request, response: Response):
 async def startup():
     await db.users.create_index("email", unique=True)
     await db.login_attempts.create_index("identifier")
+    await db.quote_rate.create_index("at", expireAfterSeconds=7200)
     email = os.environ["ADMIN_EMAIL"].lower()
     pwd = os.environ["ADMIN_PASSWORD"]
     existing = await db.users.find_one({"email": email})

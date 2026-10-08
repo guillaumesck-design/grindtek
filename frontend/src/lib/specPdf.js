@@ -1,5 +1,5 @@
 import { jsPDF } from "jspdf";
-import { BRAND, SPEC_ROWS, DIFFS } from "@/data/content";
+import { BRAND, SPEC_KEYS, specValue } from "@/data/content";
 
 const INK = [13, 20, 32];
 const STEEL = [43, 76, 111];
@@ -31,7 +31,7 @@ const drawMark = (doc, cx, cy, s) => {
   doc.lines([[3 * k, 8.5 * k], [4 * k, -6 * k], [4 * k, 6 * k], [3 * k, -8.5 * k]], cx - 7 * k, cy - 4 * k, [1, 1], "S", false);
 };
 
-const header = (doc) => {
+const header = (doc, t) => {
   doc.setFillColor(...INK);
   doc.rect(0, 0, 210, 30, "F");
   doc.setFillColor(...GOLD);
@@ -40,15 +40,15 @@ const header = (doc) => {
   doc.setTextColor(255, 255, 255);
   doc.setFont("helvetica", "bold").setFontSize(15).text("OW", 37, 14.5);
   doc.setFont("courier", "normal").setFontSize(7).setTextColor(203, 213, 225).text("AUTO GRINDING", 37, 19.5);
-  doc.setTextColor(...GOLD).setFontSize(8).text("FICHE PRODUIT", R, 13.5, { align: "right" });
+  doc.setTextColor(...GOLD).setFontSize(8).text(t.pdf.sheet, R, 13.5, { align: "right" });
   doc.setTextColor(255, 255, 255).text(BRAND.domain, R, 19.5, { align: "right" });
 };
 
-const title = (doc, m) => {
+const title = (doc, m, t) => {
   doc.setTextColor(...INK).setFont("helvetica", "bold").setFontSize(34).text(m.id, 20, 50);
   doc.setFont("helvetica", "normal").setFontSize(11).setTextColor(...MUTED);
-  doc.text("Machine CNC 5 axes d'ébavurage de pièces de fonderie", 20, 58);
-  const label = m.type.toUpperCase();
+  doc.text(t.machines.subtitle, 20, 58);
+  const label = specValue(m, "type", t).toUpperCase();
   doc.setFont("courier", "bold").setFontSize(8);
   const w = doc.getTextWidth(label) + 8;
   doc.setFillColor(...STEEL);
@@ -56,27 +56,29 @@ const title = (doc, m) => {
   doc.setTextColor(255, 255, 255).text(label, R - w / 2, 47.2, { align: "center" });
 };
 
-const specs = (doc, m, img) => {
+const specs = (doc, m, img, t) => {
   doc.setFillColor(...PAPER);
   doc.setDrawColor(...LINE);
   doc.setLineWidth(0.3);
   doc.rect(20, 66, 80, 80, "FD");
   doc.addImage(img, "PNG", 24, 70, 72, 72);
   doc.setFont("courier", "normal").setFontSize(7).setTextColor(...MUTED).text(`FIG. ${m.id}`, 23, 70);
-  doc.setFont("courier", "bold").setFontSize(8).setTextColor(...STEEL).text("CARACTÉRISTIQUES TECHNIQUES", 108, 70);
-  SPEC_ROWS.forEach(([k, label], i) => {
+  doc.setFont("courier", "bold").setFontSize(8).setTextColor(...STEEL).text(t.pdf.specs, 108, 70);
+  SPEC_KEYS.forEach((k, i) => {
+    const label = t.machines.rows[k];
+    const val = specValue(m, k, t);
     const y = 81 + i * 10;
     doc.setFont("helvetica", "normal").setFontSize(9).setTextColor(...MUTED).text(label, 108, y);
-    doc.setFont("helvetica", "bold").setFontSize(10).setTextColor(...INK).text(m[k], R, y, { align: "right" });
+    doc.setFont("helvetica", "bold").setFontSize(10).setTextColor(...INK).text(val, R, y, { align: "right" });
     const x1 = 108 + doc.setFont("helvetica", "normal").setFontSize(9).getTextWidth(label) + 2;
-    const x2 = R - doc.setFont("helvetica", "bold").setFontSize(10).getTextWidth(m[k]) - 2;
+    const x2 = R - doc.setFont("helvetica", "bold").setFontSize(10).getTextWidth(val) - 2;
     doc.setLineDashPattern([0.4, 1], 0).setDrawColor(184, 195, 207).line(x1, y - 0.8, x2, y - 0.8);
     doc.setLineDashPattern([], 0);
   });
 };
 
-const results = (doc) => {
-  const items = [["+116 %", "pièces/heure (de 60 à 130)"], ["0 %", "rebut en finition (contre 3 %)"], ["< 15 min", "changement de série"]];
+const results = (doc, t) => {
+  const items = t.pdf.results;
   items.forEach(([big, lab], i) => {
     const x = 20 + i * 58;
     doc.setFillColor(...(i === 0 ? INK : PAPER));
@@ -84,12 +86,12 @@ const results = (doc) => {
     doc.setFont("helvetica", "bold").setFontSize(18).setTextColor(...(i === 0 ? GOLD : STEEL)).text(big, x + 5, 165);
     doc.setFont("helvetica", "normal").setFontSize(8).setTextColor(...(i === 0 ? [203, 213, 225] : MUTED)).text(lab, x + 5, 172.5);
   });
-  doc.setFontSize(7).setTextColor(...MUTED).text("Résultats observés sur notre cas de référence, pour un opérateur.", 20, 183);
+  doc.setFontSize(7).setTextColor(...MUTED).text(t.pdf.resultsNote, 20, 183);
 };
 
-const advantages = (doc) => {
-  doc.setFont("courier", "bold").setFontSize(8).setTextColor(...STEEL).text("AVANTAGES CLÉS", 20, 194);
-  DIFFS.forEach((d, i) => {
+const advantages = (doc, t) => {
+  doc.setFont("courier", "bold").setFontSize(8).setTextColor(...STEEL).text(t.pdf.adv, 20, 194);
+  t.diffs.items.forEach((d, i) => {
     const x = 20 + (i % 2) * 88;
     const y = 202 + Math.floor(i / 2) * 19;
     doc.setFillColor(...GOLD).rect(x, y - 2.6, 2.4, 2.4, "F");
@@ -99,27 +101,27 @@ const advantages = (doc) => {
   });
 };
 
-const footer = (doc) => {
+const footer = (doc, t) => {
   doc.setFillColor(...INK).rect(0, 262, 210, 35, "F");
   doc.setFillColor(...GOLD).rect(0, 262, 210, 0.8, "F");
-  doc.setFont("helvetica", "bold").setFontSize(11).setTextColor(255, 255, 255).text("Demandez votre devis", 20, 273);
+  doc.setFont("helvetica", "bold").setFontSize(11).setTextColor(255, 255, 255).text(t.pdf.cta, 20, 273);
   doc.setFont("helvetica", "normal").setFontSize(8.5).setTextColor(203, 213, 225);
   doc.text(`OW Auto Grinding — ${BRAND.company}`, 20, 280);
   doc.text(BRAND.address, 20, 285);
-  doc.setTextColor(...GOLD).text(`Tél. ${BRAND.phone}  ·  ${BRAND.email}  ·  ${BRAND.domain}`, 20, 290);
-  doc.setFontSize(6.5).setTextColor(203, 213, 225).text("Caractéristiques indicatives, susceptibles d'évolution.", R, 280, { align: "right" });
-  doc.text("Document non contractuel.", R, 284, { align: "right" });
+  doc.setTextColor(...GOLD).text(`${t.pdf.tel} ${BRAND.phone}  ·  ${BRAND.email}  ·  ${BRAND.domain}`, 20, 290);
+  doc.setFontSize(6.5).setTextColor(203, 213, 225).text(t.pdf.disc1, R, 280, { align: "right" });
+  doc.text(t.pdf.disc2, R, 284, { align: "right" });
 };
 
-export async function downloadSpecPdf(m) {
+export async function downloadSpecPdf(m, t) {
   const doc = new jsPDF({ unit: "mm", format: "a4" });
-  doc.setProperties({ title: `Fiche produit ${m.id} — OW Auto Grinding`, author: "OW Auto Grinding" });
+  doc.setProperties({ title: `${t.pdf.sheet} ${m.id} — OW Auto Grinding`, author: "OW Auto Grinding" });
   const img = await loadImg(m.img);
-  header(doc);
-  title(doc, m);
-  specs(doc, m, img);
-  results(doc);
-  advantages(doc);
-  footer(doc);
-  doc.save(`OW-Auto-Grinding-${m.id.replace(" ", "")}-fiche-produit.pdf`);
+  header(doc, t);
+  title(doc, m, t);
+  specs(doc, m, img, t);
+  results(doc, t);
+  advantages(doc, t);
+  footer(doc, t);
+  doc.save(`OW-Auto-Grinding-${m.id.replace(" ", "")}-${t.pdf.file}.pdf`);
 }

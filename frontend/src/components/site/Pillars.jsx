@@ -1,16 +1,19 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { SectionHead, FadeUp, EASE } from "./Reveal";
-import { PILLARS } from "@/data/content";
 import { scrollToId } from "@/lib/api";
+import { useLang } from "@/i18n";
 
-export const Pillars = () => (
+export const Pillars = () => {
+  const { t } = useLang();
+  const c = t.pillars;
+  return (
   <section id="piliers" data-testid="pillars-section" className="py-20 md:py-32 bg-white border-y border-line">
     <div className="mx-auto max-w-[1360px] px-5 md:px-10">
-      <SectionHead index="04" label="Piliers" lines={["Trois piliers qui rendent", "l'automatisation possible", "dans votre fonderie."]} />
+      <SectionHead index="04" label={c.label} lines={c.lines} />
       <div className="grid md:grid-cols-3 gap-10 md:gap-8">
-        {PILLARS.map((p, i) => (
-          <FadeUp key={p.t} delay={i * 0.12} data-testid={`pillar-${i}`}>
+        {c.items.map((p, i) => (
+          <FadeUp key={i} delay={i * 0.12} data-testid={`pillar-${i}`}>
             <motion.div
               className="h-[2px] bg-gold origin-left mb-6"
               initial={{ scaleX: 0 }}
@@ -30,9 +33,10 @@ export const Pillars = () => (
           onClick={() => scrollToId("contact")}
           className="group inline-flex items-center gap-2 font-semibold text-steel border-b-2 border-gold pb-1 hover:text-ink transition-colors"
         >
-          Demander une évaluation technique <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          {c.cta} <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
         </button>
       </FadeUp>
     </div>
   </section>
-);
+  );
+};

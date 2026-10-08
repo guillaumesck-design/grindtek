@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import { SectionHead, FadeUp, Counter, EASE } from "./Reveal";
-import { BENEFITS } from "@/data/content";
 import { scrollToId } from "@/lib/api";
+import { useLang } from "@/i18n";
 
 const Bar = ({ label, value, pct, strong }) => (
   <div>
@@ -23,44 +23,47 @@ const Bar = ({ label, value, pct, strong }) => (
   </div>
 );
 
-export const Results = () => (
+export const Results = () => {
+  const { t } = useLang();
+  const c = t.results;
+  return (
   <section id="resultats" data-testid="results-section" className="py-20 md:py-32">
     <div className="mx-auto max-w-[1360px] px-5 md:px-10">
-      <SectionHead index="03" label="Résultats" lines={["Une efficacité et une", "productivité prouvées."]} />
+      <SectionHead index="03" label={c.label} lines={c.lines} />
       <div className="grid lg:grid-cols-12 gap-5">
         <FadeUp className="lg:col-span-7 bg-white border border-line p-6 md:p-10 relative tick" data-testid="results-productivity">
-          <div className="eyebrow">Productivité</div>
+          <div className="eyebrow">{c.productivity}</div>
           <div className="flex flex-wrap items-end gap-4 mt-4">
-            <Counter to={116} prefix="+" suffix=" %" className="font-display font-extrabold text-6xl md:text-8xl text-ink leading-none" testId="results-productivity-value" />
-            <span className="font-mono text-sm text-slate-600 pb-2">pièces / heure</span>
+            <Counter to={116} prefix="+" suffix={t.pct} className="font-display font-extrabold text-6xl md:text-8xl text-ink leading-none" testId="results-productivity-value" />
+            <span className="font-mono text-sm text-slate-600 pb-2">{c.perHour}</span>
           </div>
           <div className="mt-10 space-y-6">
-            <Bar label="Avant" value="1 opérateur · 60 pièces/h" pct={46} />
-            <Bar label="Après" value="1 opérateur · 130 pièces/h" pct={100} strong />
+            <Bar label={c.before} value={c.op60} pct={46} />
+            <Bar label={c.after} value={c.op130} pct={100} strong />
           </div>
         </FadeUp>
         <FadeUp delay={0.1} className="lg:col-span-5 bg-ink text-white p-6 md:p-10 flex flex-col" data-testid="results-scrap">
-          <div className="eyebrow !text-slate-300">Rebut en finition</div>
+          <div className="eyebrow !text-slate-300">{c.scrap}</div>
           <div className="mt-4 font-display font-extrabold text-7xl md:text-8xl leading-none">
-            0<span className="text-gold"> %</span>
+            0<span className="text-gold">{t.pct}</span>
           </div>
-          <div className="mt-3 font-mono text-sm text-slate-300">de perte — Zéro rebut</div>
+          <div className="mt-3 font-mono text-sm text-slate-300">{c.scrapSub}</div>
           <div className="mt-auto pt-10 grid grid-cols-2 gap-4 border-t border-white/15">
             <div className="pt-4">
-              <div className="font-mono text-xs uppercase tracking-[0.12em] text-slate-300">Avant</div>
-              <div className="font-display text-2xl font-bold line-through decoration-gold/80">3 %</div>
+              <div className="font-mono text-xs uppercase tracking-[0.12em] text-slate-300">{c.before}</div>
+              <div className="font-display text-2xl font-bold line-through decoration-gold/80">3{t.pct}</div>
             </div>
             <div className="pt-4">
-              <div className="font-mono text-xs uppercase tracking-[0.12em] text-slate-300">Après</div>
-              <div className="font-display text-2xl font-bold">0 %</div>
+              <div className="font-mono text-xs uppercase tracking-[0.12em] text-slate-300">{c.after}</div>
+              <div className="font-display text-2xl font-bold">0{t.pct}</div>
             </div>
           </div>
         </FadeUp>
         <FadeUp delay={0.15} className="lg:col-span-12 bg-white border border-line p-6 md:p-10" data-testid="results-benefits">
-          <div className="eyebrow mb-6">Autres bénéfices</div>
+          <div className="eyebrow mb-6">{c.other}</div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {BENEFITS.map((b) => (
-              <div key={b} className="flex gap-3">
+            {c.benefits.map((b, i) => (
+              <div key={i} className="flex gap-3">
                 <CheckCircle2 className="w-5 h-5 text-steel shrink-0 mt-0.5" />
                 <p className="text-slate-700 leading-relaxed">{b}</p>
               </div>
@@ -74,9 +77,10 @@ export const Results = () => (
           onClick={() => scrollToId("contact")}
           className="group inline-flex items-center gap-2 bg-steel text-white font-semibold px-6 py-3.5 rounded-full hover:bg-ink transition-colors"
         >
-          Demander une évaluation technique <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          {c.cta} <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
         </button>
       </FadeUp>
     </div>
   </section>
-);
+  );
+};

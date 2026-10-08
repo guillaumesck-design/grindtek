@@ -1,9 +1,11 @@
-const WORDS = ["Ébavurage automatisé", "Fonte", "Acier", "Aluminium", "CNC 5 axes", "Weijing × OW", "Zéro rebut", "Programmation par points"];
+import { useLang } from "@/i18n";
 
-export const Marquee = () => (
+export const Marquee = () => {
+  const { t } = useLang();
+  return (
   <div data-testid="marquee" className="relative overflow-hidden border-y border-line bg-white py-6 md:py-8 select-none" aria-hidden="true">
     <div className="marquee-track flex items-center">
-      {[...WORDS, ...WORDS].map((w, i) => (
+      {[...t.marquee, ...t.marquee].map((w, i) => (
         <span key={i} className="flex items-center">
           <span className={`font-display font-bold text-4xl md:text-7xl whitespace-nowrap px-6 md:px-10 ${i % 2 ? "text-outline" : "text-ink"}`}>
             {w}
@@ -13,4 +15,5 @@ export const Marquee = () => (
       ))}
     </div>
   </div>
-);
+  );
+};

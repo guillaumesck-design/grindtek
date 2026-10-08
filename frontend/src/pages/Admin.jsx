@@ -127,7 +127,7 @@ const Dashboard = ({ user, onLogout }) => {
               {!loading && shown.length === 0 && <tr><td colSpan={8} className="px-4 py-10 text-center text-slate-600" data-testid="admin-empty">Aucune demande pour le moment.</td></tr>}
               {!loading && shown.map((q) => (
                 <tr key={q.id} className="border-t border-line align-top" data-testid={`admin-row-${q.id}`}>
-                  <td className="px-4 py-4 font-mono text-xs whitespace-nowrap">{new Date(q.created_at).toLocaleString("fr-FR")}</td>
+                  <td className="px-4 py-4 font-mono text-xs whitespace-nowrap">{new Date(q.created_at).toLocaleString("fr-FR")}<span className="block mt-1 text-slate-500 uppercase" data-testid={`admin-lang-${q.id}`}>{q.lang || "fr"}</span></td>
                   <td className="px-4 py-4"><div className="font-semibold text-ink">{q.name}</div><a href={`mailto:${q.email}`} className="block text-steel">{q.email}</a><a href={`tel:${q.phone}`} className="block font-mono text-xs text-slate-600">{q.phone}</a></td>
                   <td className="px-4 py-4">{q.company}</td>
                   <td className="px-4 py-4">{MAT[q.material] || q.material}</td>

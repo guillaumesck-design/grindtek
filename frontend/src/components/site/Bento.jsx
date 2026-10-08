@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { MousePointerClick, Timer, Box, Cog, ScanLine, Disc3, ArrowRight } from "lucide-react";
 import { SectionHead, FadeUp, EASE } from "./Reveal";
-import { DIFFS } from "@/data/content";
+import { DIFF_KEYS } from "@/data/content";
 import { scrollToId } from "@/lib/api";
+import { useLang } from "@/i18n";
 
 const ICONS = { prog: MousePointerClick, setup: Timer, fixture: Box, pre: Cog, laser: ScanLine, disc: Disc3 };
 const SPAN = { prog: "md:col-span-2", disc: "md:col-span-2 lg:col-span-3" };
@@ -26,7 +27,7 @@ const PointPath = () => (
   </svg>
 );
 
-const Card = ({ d, i }) => {
+const Card = ({ d, i, alt }) => {
   const Icon = ICONS[d.k];
   const dark = d.k === "setup";
   return (
@@ -51,7 +52,7 @@ const Card = ({ d, i }) => {
           </div>
           {d.k === "disc" && (
             <div className="spotlight h-56 md:h-64 overflow-hidden">
-              <img src="/img/cnc.png" alt="Machine CNC à disques diamantés" className="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-105" />
+              <img src="/img/cnc.png" alt={alt} className="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-105" />
             </div>
           )}
         </div>
@@ -60,12 +61,15 @@ const Card = ({ d, i }) => {
   );
 };
 
-export const Bento = () => (
+export const Bento = () => {
+  const { t } = useLang();
+  const c = t.diffs;
+  return (
   <section id="atouts" data-testid="bento-section" className="py-20 md:py-32">
     <div className="mx-auto max-w-[1360px] px-5 md:px-10">
-      <SectionHead index="07" label="Différenciateurs" lines={["Ce qui fait la différence,", "jour après jour."]} />
+      <SectionHead index="07" label={c.label} lines={c.lines} />
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {DIFFS.map((d, i) => <Card key={d.k} d={d} i={i} />)}
+        {DIFF_KEYS.map((k, i) => <Card key={k} d={{ k, ...c.items[i] }} i={i} alt={c.discAlt} />)}
       </div>
       <FadeUp className="mt-10">
         <button
@@ -73,9 +77,10 @@ export const Bento = () => (
           onClick={() => scrollToId("contact")}
           className="group inline-flex items-center gap-2 bg-steel text-white font-semibold px-6 py-3.5 rounded-full hover:bg-ink transition-colors"
         >
-          Demander une évaluation technique <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          {c.cta} <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
         </button>
       </FadeUp>
     </div>
   </section>
-);
+  );
+};

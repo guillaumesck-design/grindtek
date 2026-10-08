@@ -21,10 +21,12 @@ import { Faq } from "@/components/site/Faq";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { LegalDialog } from "@/components/site/Legal";
+import { LangProvider } from "@/i18n";
 
 export default function Landing() {
   const [legal, setLegal] = useState(null);
   return (
+    <LangProvider>
     <div className="grain overflow-x-clip" data-testid="landing-page">
       <SmoothScroll />
       <Nav />
@@ -51,5 +53,6 @@ export default function Landing() {
       <Footer onLegal={setLegal} />
       <LegalDialog open={legal} onClose={() => setLegal(null)} />
     </div>
+    </LangProvider>
   );
 }

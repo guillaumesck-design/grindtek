@@ -135,6 +135,7 @@ def quote_alert_html(q: dict) -> str:
         _row("Téléphone", f'<a href="tel:{escape(tel)}" style="color:#2b4c6f">{phone}</a>'),
         _row("Matériau principal", escape(MAT.get(q["material"], q["material"]))),
         _row("Machine d'intérêt", escape(q.get("machine") or "Non précisée")),
+        _row("Langue du site", escape(str(q.get("lang") or "fr").upper())),
         _row("Message", escape(q.get("message") or "—").replace("\n", "<br>")),
     ])
     return (
@@ -153,6 +154,67 @@ def quote_alert_html(q: dict) -> str:
         'Notification automatique envoyée par OW Auto Grinding.</td></tr>'
         '</table></td></tr></table>'
     )
+
+
+ACK = {
+    "fr": {"subject": "Votre demande de devis a bien été reçue", "hello": "Bonjour,",
+           "body": "Merci pour votre demande de devis. Nous l'avons bien reçue et un membre de notre équipe vous recontactera rapidement pour étudier vos pièces.",
+           "recap": "Récapitulatif", "material": "Matériau principal", "machine": "Machine d'intérêt", "none": "Non précisée",
+           "contact": "Pour toute question, répondez simplement à cet e-mail ou appelez-nous au",
+           "foot": "Vous recevez cet e-mail car une demande de devis a été envoyée avec cette adresse sur le site OW Auto Grinding. Si ce n'est pas vous, ignorez ce message.",
+           "mat": {"fonte": "Fonte", "acier": "Acier", "aluminium": "Aluminium", "autre": "Autre"}},
+    "pt": {"subject": "O seu pedido de orçamento foi recebido", "hello": "Olá,",
+           "body": "Obrigado pelo seu pedido de orçamento. Recebemo-lo e um membro da nossa equipa entrará em contacto brevemente para estudar as suas peças.",
+           "recap": "Resumo", "material": "Material principal", "machine": "Máquina de interesse", "none": "Não indicada",
+           "contact": "Para qualquer questão, responda a este e-mail ou ligue-nos para o",
+           "foot": "Recebe este e-mail porque foi enviado um pedido de orçamento com este endereço no site OW Auto Grinding. Se não foi você, ignore esta mensagem.",
+           "mat": {"fonte": "Ferro fundido", "acier": "Aço", "aluminium": "Alumínio", "autre": "Outro"}},
+    "es": {"subject": "Hemos recibido su solicitud de presupuesto", "hello": "Hola,",
+           "body": "Gracias por su solicitud de presupuesto. La hemos recibido y un miembro de nuestro equipo se pondrá en contacto con usted en breve para estudiar sus piezas.",
+           "recap": "Resumen", "material": "Material principal", "machine": "Máquina de interés", "none": "No indicada",
+           "contact": "Para cualquier consulta, responda a este e-mail o llámenos al",
+           "foot": "Recibe este e-mail porque se envió una solicitud de presupuesto con esta dirección en el sitio de OW Auto Grinding. Si no ha sido usted, ignore este mensaje.",
+           "mat": {"fonte": "Hierro fundido", "acier": "Acero", "aluminium": "Aluminio", "autre": "Otro"}},
+    "en": {"subject": "We have received your quote request", "hello": "Hello,",
+           "body": "Thank you for your quote request. We have received it and a member of our team will contact you shortly to study your parts.",
+           "recap": "Summary", "material": "Main material", "machine": "Machine of interest", "none": "Not specified",
+           "contact": "For any question, simply reply to this email or call us on",
+           "foot": "You are receiving this email because a quote request was sent with this address on the OW Auto Grinding website. If this was not you, please ignore this message.",
+           "mat": {"fonte": "Cast iron", "acier": "Steel", "aluminium": "Aluminium", "autre": "Other"}},
+}
+
+
+def quote_ack_html(q: dict) -> tuple:
+    c = ACK.get(q.get("lang") or "fr", ACK["fr"])
+    site = os.environ["SITE_URL"].rstrip("/")
+    phone = os.environ["CONTACT_PHONE"]
+    rows = _row(c["material"], escape(c["mat"].get(q["material"], q["material"]))) + _row(c["machine"], escape(q.get("machine") or c["none"]))
+    html = (
+        '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f6f8;padding:24px 0">'
+        '<tr><td align="center"><table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;font-family:Arial,sans-serif">'
+        '<tr><td style="background:#0d1420;padding:20px 28px;color:#ffffff;font-size:18px;font-weight:bold">'
+        'OW <span style="color:#c5b358">Auto Grinding</span></td></tr>'
+        '<tr><td style="padding:28px;color:#0d1420;font-size:15px;line-height:1.6">'
+        f'<p style="margin:0 0 12px">{escape(c["hello"])}</p>'
+        f'<p style="margin:0 0 20px">{escape(c["body"])}</p>'
+        f'<div style="font-size:11px;letter-spacing:2px;color:#2b4c6f;font-weight:bold;margin-bottom:6px">{escape(c["recap"]).upper()}</div>'
+        f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #dce2e9">{rows}</table>'
+        f'<p style="margin:20px 0 0;font-size:14px">{escape(c["contact"])} <a href="tel:{escape(phone.replace(" ", ""))}" style="color:#2b4c6f">{escape(phone)}</a>.</p>'
+        f'<p style="margin:20px 0 0"><a href="{escape(site)}" style="display:inline-block;background:#2b4c6f;color:#ffffff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:bold;font-size:14px">OW Auto Grinding</a></p>'
+        '</td></tr>'
+        f'<tr><td style="padding:16px 28px;border-top:1px solid #dce2e9;font-size:11px;color:#64748b">{escape(c["foot"])}</td></tr>'
+        '</table></td></tr></table>'
+    )
+    return c["subject"], html
+
+
+async def send_quote_ack(q: dict) -> None:
+    subject, html = quote_ack_html(q)
+    try:
+        eid = await send_email(to=[q["email"]], subject=subject, html=html)
+        logger.info(f"Quote ack sent: {eid}")
+    except Exception as e:
+        logger.error(f"Quote ack not sent: {e}")
 
 
 async def notify_new_quote(q: dict) -> None:

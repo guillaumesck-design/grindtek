@@ -4,8 +4,11 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Logo } from "./Logo";
 import { NAV } from "@/data/content";
 import { scrollToId } from "@/lib/api";
+import { useLang } from "@/i18n";
+import { LangSwitcher } from "./LangSwitcher";
 
 export const Nav = () => {
+  const { t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   useEffect(() => {
@@ -26,29 +29,30 @@ export const Nav = () => {
       }`}
     >
       <div className="mx-auto max-w-[1360px] px-5 md:px-10 h-[68px] flex items-center justify-between">
-        <button data-testid="nav-logo" onClick={() => go("top")} aria-label="Accueil OW Auto Grinding">
+        <button data-testid="nav-logo" onClick={() => go("top")} aria-label={t.nav.home}>
           <Logo />
         </button>
         <nav className="hidden xl:flex items-center gap-7">
-          {NAV.map((n) => (
+          {NAV.map((id) => (
             <button
-              key={n.id}
-              data-testid={`nav-link-${n.id}`}
-              onClick={() => go(n.id)}
+              key={id}
+              data-testid={`nav-link-${id}`}
+              onClick={() => go(id)}
               className="group relative text-[13px] font-medium text-slate-700 hover:text-ink transition-colors"
             >
-              {n.label}
+              {t.nav[id]}
               <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-gold transition-transform duration-300 group-hover:scale-x-100" />
             </button>
           ))}
         </nav>
         <div className="flex items-center gap-2">
+          <LangSwitcher className="hidden md:inline-flex" />
           <button
             data-testid="nav-quote-btn"
             onClick={() => go("contact")}
             className="group hidden sm:inline-flex items-center gap-2 bg-ink text-white text-[13px] font-semibold pl-4 pr-3 py-2.5 rounded-full hover:bg-steel transition-colors"
           >
-            Demander un devis
+            {t.nav.quote}
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45" />
           </button>
           <button
@@ -71,14 +75,15 @@ export const Nav = () => {
             className="xl:hidden overflow-hidden border-t border-line bg-white"
           >
             <div className="px-5 py-4 grid gap-1">
-              {[...NAV, { id: "contact", label: "Demander un devis" }].map((n, i) => (
+              <LangSwitcher className="md:hidden self-start mb-2 w-max" />
+              {[...NAV, "contact"].map((id, i) => (
                 <button
-                  key={n.id}
-                  data-testid={`nav-mobile-link-${n.id}`}
-                  onClick={() => go(n.id)}
+                  key={id}
+                  data-testid={`nav-mobile-link-${id}`}
+                  onClick={() => go(id)}
                   className="flex items-center justify-between py-3 border-b border-line text-left font-display text-xl font-semibold"
                 >
-                  {n.label}
+                  {id === "contact" ? t.nav.quote : t.nav[id]}
                   <span className="font-mono text-xs text-slate-500">0{i + 1}</span>
                 </button>
               ))}

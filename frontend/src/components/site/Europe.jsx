@@ -1,12 +1,12 @@
 import { MapPin, Phone } from "lucide-react";
 import { SectionHead, FadeUp } from "./Reveal";
-import { CITIES, BRAND } from "@/data/content";
+import { CITIES, LEFT_CITIES, BRAND } from "@/data/content";
+import { useLang } from "@/i18n";
 
 const C = 260;
 const R = 235;
 const KM = 1600;
 const BASE = [3.32, 49.52];
-const LEFT = ["Londres", "Madrid", "Lisbonne", "Bordeaux", "Barcelone", "Lyon"];
 
 const project = (lon, lat) => {
   const dx = (lon - BASE[0]) * Math.cos((BASE[1] * Math.PI) / 180) * 111.32;
@@ -14,7 +14,7 @@ const project = (lon, lat) => {
   return [C + (dx / KM) * R, C - (dy / KM) * R];
 };
 
-const Radar = () => (
+const Radar = ({ names }) => (
   <svg viewBox="0 0 520 520" className="w-full h-auto" data-testid="europe-radar">
     <defs>
       <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
@@ -33,11 +33,12 @@ const Radar = () => (
     <g className="radar-sweep">
       <path d={`M${C} ${C} L${C + R} ${C} A${R} ${R} 0 0 0 ${C + R * Math.cos(Math.PI / 5)} ${C - R * Math.sin(Math.PI / 5)} Z`} fill="url(#sweep)" />
     </g>
-    {CITIES.map(([n, lon, lat]) => {
+    {CITIES.map(([lon, lat], i) => {
       const [x, y] = project(lon, lat);
-      const left = LEFT.includes(n);
+      const left = LEFT_CITIES.includes(i);
+      const n = names[i];
       return (
-        <g key={n}>
+        <g key={i}>
           <circle cx={x} cy={y} r="3.5" fill="#2b4c6f" />
           <text x={left ? x - 7 : x + 7} y={y + 3.5} textAnchor={left ? "end" : "start"} fontSize="11" fontFamily="Archivo" fontWeight="600" fill="#0d1420">{n}</text>
         </g>
@@ -48,29 +49,33 @@ const Radar = () => (
   </svg>
 );
 
-export const Europe = () => (
+export const Europe = () => {
+  const { t } = useLang();
+  const c = t.europe;
+  return (
   <section id="europe" data-testid="europe-section" className="py-20 md:py-32 overflow-hidden">
     <div className="mx-auto max-w-[1360px] px-5 md:px-10">
-      <SectionHead index="13" label="Zone d'intervention" lines={["Depuis la France,", "au service des fonderies", "européennes."]} />
+      <SectionHead index="13" label={c.label} lines={c.lines} />
       <div className="grid lg:grid-cols-12 gap-10 items-start">
         <FadeUp className="lg:col-span-5 space-y-6">
           <p className="text-lg text-slate-600 leading-relaxed">
-            OW Auto Grinding distribue les machines CNC d'ébavurage Weijing en Europe. Notre base se situe dans l'Aisne, au cœur du nord de la France, à proximité des grands bassins de fonderie européens.
+            {c.text}
           </p>
           <div className="border border-line bg-white p-6 relative tick space-y-4" data-testid="europe-base-card">
-            <div className="eyebrow">Notre base</div>
+            <div className="eyebrow">{c.base}</div>
             <div className="flex gap-3"><MapPin className="w-5 h-5 text-steel shrink-0 mt-0.5" /><span className="text-ink">{BRAND.address}</span></div>
             <a href={BRAND.phoneHref} data-testid="europe-phone-link" className="flex gap-3 hover:text-steel transition-colors"><Phone className="w-5 h-5 text-steel shrink-0 mt-0.5" /><span className="font-mono">{BRAND.phone}</span></a>
           </div>
-          <p className="text-sm text-slate-600">Les cercles indiquent les distances depuis notre base. Contactez-nous pour toute intervention en Europe.</p>
+          <p className="text-sm text-slate-600">{c.note}</p>
         </FadeUp>
         <FadeUp delay={0.15} className="lg:col-span-7">
           <div className="relative spotlight border border-line p-4 md:p-8">
-            <span className="absolute top-4 left-4 font-mono text-[11px] uppercase tracking-[0.14em] text-slate-600">Fig. 13 — Rayon d'action</span>
-            <Radar />
+            <span className="absolute top-4 left-4 font-mono text-[11px] uppercase tracking-[0.14em] text-slate-600">{c.fig}</span>
+            <Radar names={c.cities} />
           </div>
         </FadeUp>
       </div>
     </div>
   </section>
-);
+  );
+};
