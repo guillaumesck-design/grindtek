@@ -4,6 +4,7 @@ import { ArrowRight, Scale } from "lucide-react";
 import { SectionHead, FadeUp, EASE } from "./Reveal";
 import { MACHINES, SPEC_ROWS } from "@/data/content";
 import { requestMachine, scrollToId } from "@/lib/api";
+import { PdfButton } from "./PdfButton";
 
 const ModelList = ({ active, setActive }) => (
   <div className="flex lg:flex-col gap-2 overflow-x-auto pb-2 lg:pb-0 -mx-5 px-5 lg:mx-0 lg:px-0" data-lenis-prevent-wheel>
@@ -73,6 +74,11 @@ const SpecSheet = ({ m, i }) => (
         >
           <Scale className="w-4 h-4" /> Comparer
         </button>
+        <PdfButton
+          machine={m}
+          testId="machine-pdf-btn"
+          className="inline-flex items-center gap-2 border border-line font-semibold px-5 py-3 rounded-full hover:border-ink disabled:opacity-60 transition-colors"
+        />
       </div>
     </div>
   </div>

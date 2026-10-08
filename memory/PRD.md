@@ -25,12 +25,18 @@ voici un site internet que je souhaiterais entierement copié, l'objectif étant
 - Original OW SVG logo + favicon
 - Admin dashboard: login, list, status update, delete, filter, CSV export
 
+## Implemented (2026-10-08, iteration 2)
+- Instant email alert on each new quote (Emergent-managed Resend, `backend/email_service.py`), recipients from `QUOTE_ALERT_EMAILS` (contact@overkkast.com), sent in background, link to SITE_URL/admin
+- Branded A4 PDF spec sheet per GV machine (client-side jsPDF, `src/lib/specPdf.js`): specs, photo, key results, 6 advantages, OW contact block. Buttons in catalogue + GV 230 section
+- Contact email set to contact@overkkast.com site-wide (contact, legal, PDF)
+- Backend validates machine against the 5 GV ids
+
 ## Placeholders to complete
-- Contact email, capital social, hébergeur (legal notice)
+- Capital social, hébergeur (legal notice)
 - ROI default investment (180 000 €) is a hypothesis
 - Photos still show AW branding (user will replace)
 
 ## Backlog
-- P1: Email notification on new quote (Resend)
+- P1: Confirmation email to the prospect after submission
 - P1: Replace images/logo with OW-branded assets
 - P2: Downloadable PDF spec sheets per machine; EN/DE versions; SEO meta per section

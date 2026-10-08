@@ -12,10 +12,12 @@ from typing import Annotated, List, Literal, Optional
 import bcrypt
 import jwt
 from bson import ObjectId
-from fastapi import FastAPI, APIRouter, HTTPException, Request, Response, Depends
+from fastapi import FastAPI, APIRouter, HTTPException, Request, Response, Depends, BackgroundTasks
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel, BeforeValidator, ConfigDict, EmailStr, Field
 from starlette.middleware.cors import CORSMiddleware
+
+from email_service import notify_new_quote
 
 client = AsyncIOMotorClient(os.environ['MONGO_URL'])
 db = client[os.environ['DB_NAME']]
@@ -27,6 +29,7 @@ logging.basicConfig(level=logging.INFO)
 
 JWT_ALGORITHM = "HS256"
 PyObjectId = Annotated[str, BeforeValidator(lambda v: str(v) if isinstance(v, ObjectId) else v)]
+MachineId = Literal["GV 120", "GV 130", "GV 230", "GV 270", "GV 2100"]
 Status = Literal["nouveau", "en_etude", "devis_envoye", "gagne", "perdu"]
 
 
@@ -49,7 +52,7 @@ class QuoteIn(BaseModel):
     phone: str = Field(min_length=6, max_length=40)
     email: EmailStr
     material: Literal["fonte", "acier", "aluminium", "autre"]
-    machine: Optional[str] = Field(default=None, max_length=40)
+    machine: Optional[MachineId] = None
     message: Optional[str] = Field(default=None, max_length=2000)
     consent: bool
 
@@ -122,11 +125,12 @@ async def root():
 
 
 @api.post("/quotes", status_code=201)
-async def create_quote(body: QuoteIn):
+async def create_quote(body: QuoteIn, background: BackgroundTasks):
     if not body.consent:
         raise HTTPException(400, "Le consentement est requis")
     q = Quote(**body.model_dump(exclude={"consent"}), created_at=datetime.now(timezone.utc).isoformat())
     res = await db.quotes.insert_one(q.to_mongo())
+    background.add_task(notify_new_quote, q.model_dump(exclude={"id"}))
     return {"id": str(res.inserted_id), "ok": True}
 
 

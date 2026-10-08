@@ -17,7 +17,7 @@ export const Contact = ({ onLegal }) => (
         <FadeUp delay={0.25} className="mt-10 space-y-4 text-[15px]">
           <div className="flex gap-3"><MapPin className="w-5 h-5 text-gold shrink-0 mt-0.5" /><span className="text-slate-200">{BRAND.address}</span></div>
           <a href={BRAND.phoneHref} data-testid="contact-phone-link" className="flex gap-3 hover:text-gold transition-colors"><Phone className="w-5 h-5 text-gold shrink-0 mt-0.5" /><span className="font-mono">{BRAND.phone}</span></a>
-          <div className="flex gap-3" data-testid="contact-email"><Mail className="w-5 h-5 text-gold shrink-0 mt-0.5" /><span className="text-slate-200">{BRAND.email}</span></div>
+          <a href={`mailto:${BRAND.email}`} className="flex gap-3 hover:text-gold transition-colors" data-testid="contact-email"><Mail className="w-5 h-5 text-gold shrink-0 mt-0.5" /><span className="text-slate-200">{BRAND.email}</span></a>
         </FadeUp>
       </div>
       <FadeUp delay={0.1} className="lg:col-span-7 text-ink">

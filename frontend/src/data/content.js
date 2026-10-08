@@ -5,7 +5,7 @@ export const BRAND = {
   address: "Route de Moyembrie, 02380 Coucy-le-Château-Auffrique, France",
   phone: "01 84 80 86 99",
   phoneHref: "tel:+33184808699",
-  email: "[email de contact à compléter]",
+  email: "contact@overkkast.com",
 };
 
 export const NAV = [

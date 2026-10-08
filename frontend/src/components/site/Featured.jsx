@@ -3,6 +3,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { FadeUp, MaskLines } from "./Reveal";
 import { requestMachine } from "@/lib/api";
+import { MACHINES } from "@/data/content";
+import { PdfButton } from "./PdfButton";
 
 const FIGS = [
   ["500 × 300 mm", "Diamètre × hauteur"],
@@ -37,13 +39,20 @@ export const Featured = () => {
               </FadeUp>
             ))}
           </div>
+          <div className="mt-10 flex flex-wrap gap-3">
           <button
             data-testid="featured-quote-btn"
             onClick={() => requestMachine("GV 230")}
-            className="group mt-10 inline-flex items-center gap-2 bg-gold text-ink font-semibold px-6 py-3.5 rounded-full hover:bg-white transition-colors"
+            className="group inline-flex items-center gap-2 bg-gold text-ink font-semibold px-6 py-3.5 rounded-full hover:bg-white transition-colors"
           >
             Demander un devis <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </button>
+          <PdfButton
+            machine={MACHINES.find((x) => x.id === "GV 230")}
+            testId="featured-pdf-btn"
+            className="inline-flex items-center gap-2 border border-white/30 text-white font-semibold px-6 py-3.5 rounded-full hover:border-gold hover:text-gold disabled:opacity-60 transition-colors"
+          />
+          </div>
         </div>
         <div className="lg:col-span-6 order-1 lg:order-2 relative">
           <div className="absolute inset-[8%] rounded-full border border-dashed border-gold/40" />
