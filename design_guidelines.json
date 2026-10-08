@@ -1,0 +1,93 @@
+{
+  "brand_identity": {
+    "company_name": "OW Auto Grinding",
+    "domain": "www.owgrinding.com",
+    "legacy_brand_reference": "AW Auto Grinding (awgrinding.com.br)",
+    "partnership": "Partenaire exclusif Weijing Automation pour l'Europe",
+    "tagline": "Machines CNC d'ébavurage et de meulage de pièces de fonderie",
+    "primary_language": "fr",
+    "art_direction": "Clair & technique — fond blanc/gris clair avec surfaces épurées style 'fiche produit', accent bleu acier et détails dore métalliques issus de overkkast.com"
+  },
+  "color_palette": {
+    "brand_gold": {
+      "primary": "#c5b358",
+      "hover": "#b8a750",
+      "light": "#d4c56a",
+      "subtle_bg": "rgba(197, 179, 88, 0.1)"
+    },
+    "steel_blue": {
+      "dark": "#1e3a5f",
+      "primary": "#2b4c6f",
+      "accent": "#4a729c",
+      "light": "#6c8ea4",
+      "subtle_bg": "rgba(43, 76, 111, 0.08)"
+    },
+    "surfaces": {
+      "page_bg": "#f8fafc",
+      "section_bg_alt": "#f1f5f9",
+      "card_bg": "#ffffff",
+      "card_bg_hover": "#ffffff",
+      "hero_gradient": "linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%)",
+      "dark_surface": "#0f172a",
+      "border": "#e2e8f0",
+      "border_active": "#4a729c"
+    },
+    "text": {
+      "primary": "#0f172a",
+      "secondary": "#475569",
+      "muted": "#64748b",
+      "inverted": "#ffffff",
+      "gold_accent": "#c5b358"
+    },
+    "semantic": {
+      "success_scrap_reduction": "#16a34a",
+      "warning_alert": "#bf0000",
+      "info": "#2563eb"
+    }
+  },
+  "typography": {
+    "font_families": {
+      "heading": "Outfit, Cabinet Grotesk, sans-serif",
+      "body": "DM Sans, Inter, system-ui, sans-serif",
+      "mono": "JetBrains Mono, Space Mono, monospace"
+    },
+    "text_sizes": {
+      "h1_hero": "text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]",
+      "h2_section": "text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900",
+      "h3_card": "text-xl sm:text-2xl font-semibold text-slate-900",
+      "body_lg": "text-lg text-slate-6xl leading-relaxed",
+      "body": "text-base text-slate-600 leading-relaxed",
+      "caption_mono": "font-mono text-xs sm:text-sm uppercase tracking-[0.2em] text-slate-500"
+    }
+  },
+  "image_urls": {
+    "hero_machining_spark": "https://images.unsplash.com/photo-1711418235334-8895331a6cf9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwzfHxjbmMlMjBncmluZGluZyUyMG1hY2hpbmUlMjBpbmR1c3RyaWFsJTIwZm91bmRyeSUyMHN0ZWVsJTIwcGFydHMlMjBtYW51ZmFjdHVyaW5nfGVufDB8fHx8MTc5MTQ3NTM5OXww&ixlib=rb-4.1.0&q=85",
+    "cnc_lathe_precision": "https://images.unsplash.com/photo-1666634157070-6fd830fb5672?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwyfHxjbmMlMjBncmluZGluZyUyMG1hY2hpbmUlMjBpbmR1c3RyaWFsJTIwZm91bmRyeSUyMHN0ZWVsJTIwcGFydHMlMjBtYW51ZmFjdHVyaW5nfGVufDB8fHx8MTc5MTQ3NTM5OXww&ixlib=rb-4.1.0&q=85",
+    "milling_cutting_metal": "https://images.unsplash.com/photo-1740209475472-aa7d280f7452?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwxfHxjbmMlMjBncmluZGluZyUyMG1hY2hpbmUlMjBpbmR1c3RyaWFsJTIwZm91bmRyeSUyMHN0ZWVsJTIwcGFydHMlMjBtYW51ZmFjdHVyaW5nfGVufDB8fHx8MTc5MTQ3NTM5OXww&ixlib=rb-4.1.0&q=85",
+    "factory_automation_worker": "https://images.unsplash.com/photo-1730584474338-aa8d9d186bf7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzB8MHwxfHNlYXJjaHwyfHxmYWN0b3J5JTIwd29ya2VyJTIwbWV0YWwlMjBkZWJ1cnJpbmclMjBhdXRvbWF0ZWQlMjBtYWNoaW5lJTIwaW5kdXN0cmlhbCUyMGZhY3Rvcnl8ZW58MHx8fHwxNzkxNDc1Mzk5fDA&ixlib=rb-4.1.0&q=85",
+    "industrial_gears": "https://images.unsplash.com/photo-1524514587686-e2909d726e9b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODF8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwbWFjaGluZXJ5JTIwcHJlY2lzaW9uJTIwbWV0YWwlMjBzdGVlbCUyMGdlYXJzJTIwY29tcG9uZW50fGVufDB8fHx8MTc5MTQ3NTM5OXww&ixlib=rb-4.1.0&q=85",
+    "precision_gears_macro": "https://images.unsplash.com/photo-1567093322102-6bdd32fba67d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODF8MHwxfHNlYXJjaHwzfHxpbmR1c3RyaWFsJTIwbWFjaGluZXJ5JTIwcHJlY2lzaW9uJTIwbWV0YWwlMjBzdGVlbCUyMGdlYXJzJTIwY29tcG9uZW50fGVufDB8fHx8MTc5MTQ3NTM5OXww&ixlib=rb-4.1.0&q=85"
+  },
+  "layout_and_sections": {
+    "1_header": "Sticky navbar with glassmorphism backdrop-blur-md, OW logo mark, anchors (#catalogue, #comparatif, #roi, #processus, #europe, #faq), contact CTA and admin portal link",
+    "2_hero_section": "Masked line-by-line reveal heading, live quote trigger, stats counter preview (130 pcs/h, 0% rebut), interactive 3D machine preview node",
+    "3_marquee_ribbon": "Slow editorial marquee celebrating OW Auto Grinding x Weijing partnership, distribution Europe, ISO precision, 500+ installations",
+    "4_catalogue_section": "Interactive Fiche Produit tabs for GV 120, GV 130, GV 230 (Featured), GV 270, and GV 2100 with technical blueprint specs & pallet options",
+    "5_differentiators_bento": "6 technical pillars (Direct drive spindle, Diamond discs, Laser 3D scanning, <15min quick fixture setup, Pre-machining capability, Offline programming)",
+    "6_comparison_table": "Interactive tri-column comparative matrix: CNC OW Auto Grinding vs Cellule Robotisée vs Ébavurage Manuel",
+    "7_roi_calculator": "Interactive ROI & productivity slider calculator computing annual Euro savings, payback period (months), and hourly gain",
+    "8_five_step_process": "Horizontal/vertical timeline showing 1. Diagnostic pièce, 2. Test sur échantillon, 3. Configuration machine, 4. Livestock & Installation, 5. Support & Maintenance",
+    "9_europe_coverage": "Interactive map visual showcasing European intervention hubs (France, Allemagne, Italie, Benelux, Espagne)",
+    "10_faq_accordion": "Shadcn accordion answering top 6 technical & commercial questions",
+    "11_quote_form_modal": "Comprehensive quote request form capturing part material, annual volume, drawing upload, contact details",
+    "12_legal_modal": "Mentions Légales and Politique de Confidentialité structured popups/sections",
+    "13_admin_dashboard": "Protected admin portal at /admin with passcode login, viewing live submitted quotes, status updates (Nouveau, En étude, Devis envoyé, Gagné), filter & export"
+  },
+  "instructions_to_main_agent": {
+    "language": "French exclusively across all user-facing content.",
+    "data_testid_rule": "ALL interactive elements (buttons, inputs, tabs, sliders, accordions, modals, admin table rows) MUST carry explicit data-testid attributes.",
+    "theme": "Light & Technical theme with crisp borders (border-slate-200), high-density data cards, and overkkast gold accent highlights.",
+    "smooth_scroll": "Ensure Lenis smooth scroll and Framer Motion reveals are seamlessly integrated.",
+    "admin_access": "Include a discrete 'Accès Admin' link in footer or header navigating to /admin for viewing quote requests."
+  }
+}

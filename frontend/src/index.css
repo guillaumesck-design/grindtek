@@ -1,0 +1,91 @@
+@import "lenis/dist/lenis.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --ink: #0d1420;
+    --steel: #2b4c6f;
+    --steel-2: #4a729c;
+    --gold: #c5b358;
+    --paper: #f4f6f8;
+    --line: #dce2e9;
+}
+
+body {
+    margin: 0;
+    font-family: "Archivo", ui-sans-serif, sans-serif;
+    font-variation-settings: "wdth" 100;
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--gold); color: var(--ink); }
+
+@layer base {
+    :root {
+        --background: 210 20% 97%;
+        --foreground: 216 42% 9%;
+        --card: 0 0% 100%;
+        --card-foreground: 216 42% 9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 216 42% 9%;
+        --primary: 211 44% 30%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 210 20% 94%;
+        --secondary-foreground: 216 42% 9%;
+        --muted: 210 20% 94%;
+        --muted-foreground: 215 19% 35%;
+        --accent: 50 47% 56%;
+        --accent-foreground: 216 42% 9%;
+        --destructive: 0 100% 37%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 212 21% 89%;
+        --input: 212 21% 85%;
+        --ring: 211 36% 45%;
+        --radius: 0.25rem;
+    }
+}
+
+@layer base {
+    * { @apply border-border; }
+    body { @apply bg-background text-foreground; }
+}
+
+@layer components {
+    .font-display { font-family: "Archivo", sans-serif; font-variation-settings: "wdth" 118; letter-spacing: -0.035em; }
+    .font-mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+    .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: #3b4a5c; }
+    .blueprint { background-image: linear-gradient(to right, rgba(43,76,111,.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(43,76,111,.07) 1px, transparent 1px); background-size: 56px 56px; }
+    .blueprint-dark { background-image: linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 56px 56px; }
+    .clip-corner { clip-path: polygon(0 0, calc(100% - 36px) 0, 100% 36px, 100% 100%, 36px 100%, 0 calc(100% - 36px)); }
+    .clip-corner-sm { clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%); }
+    .spotlight { background: radial-gradient(60% 55% at 50% 45%, #ffffff 0%, #eef2f6 55%, #dfe6ee 100%); }
+    .spotlight-dark { background: radial-gradient(55% 50% at 50% 42%, #3a5a7e 0%, #16243a 55%, #0d1420 100%); }
+    .leader { flex: 1; border-bottom: 1px dotted #b8c3cf; transform: translateY(-4px); margin: 0 10px; min-width: 16px; }
+    .tick::before, .tick::after { content: ""; position: absolute; width: 14px; height: 14px; border-color: var(--gold); pointer-events: none; }
+    .tick::before { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; border-color: var(--gold); }
+    .tick::after { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; border-color: var(--gold); }
+    .text-outline { -webkit-text-stroke: 1.2px var(--ink); color: transparent; }
+}
+
+.grain::after {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: .05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+.marquee-track { animation: marquee 70s linear infinite; width: max-content; }
+.gallery-track { animation: marquee 60s linear infinite; width: max-content; }
+.gallery-track:hover { animation-play-state: paused; }
+
+@keyframes pulse-ring { 0% { transform: scale(.6); opacity: .8; } 100% { transform: scale(2.4); opacity: 0; } }
+.pulse-ring { transform-origin: center; transform-box: fill-box; animation: pulse-ring 2.4s ease-out infinite; }
+
+@keyframes spin360 { to { transform: rotate(-360deg); } }
+.radar-sweep { transform-origin: 260px 260px; transform-box: view-box; animation: spin360 9s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track, .gallery-track, .pulse-ring, .radar-sweep { animation: none; }
+}
