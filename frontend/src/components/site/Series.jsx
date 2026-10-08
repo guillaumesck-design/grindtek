@@ -45,8 +45,7 @@ export const Series = () => {
           </FadeUp>
         </div>
         <FadeUp delay={0.15} className="lg:col-span-6">
-          <div className="relative spotlight aspect-square max-w-[560px] mx-auto rounded-full overflow-hidden border border-line">
-            <motion.div className="absolute inset-6 rounded-full border border-dashed border-steel/30" animate={{ rotate: 360 }} transition={{ duration: 60, repeat: Infinity, ease: "linear" }} />
+          <div className="relative aspect-square max-w-[560px] mx-auto">
             <img src="/img/cnc.png" alt={c.alt} className="relative w-full h-full object-contain p-12" />
           </div>
         </FadeUp>

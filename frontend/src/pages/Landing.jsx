@@ -2,7 +2,6 @@ import { useState } from "react";
 import { SmoothScroll } from "@/components/site/SmoothScroll";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
-import { Marquee } from "@/components/site/Marquee";
 import { Intro } from "@/components/site/Intro";
 import { Machines } from "@/components/site/Machines";
 import { Featured } from "@/components/site/Featured";
@@ -32,7 +31,6 @@ export default function Landing() {
       <Nav />
       <main>
         <Hero />
-        <Marquee />
         <Intro />
         <Machines />
         <Featured />

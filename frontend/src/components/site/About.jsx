@@ -31,12 +31,6 @@ export const About = () => {
             <p>{c.p3a} <strong className="text-ink">Weijing</strong>{c.p3b}</p>
           </FadeUp>
           <FadeUp delay={0.25} className="mt-8 flex flex-wrap items-center gap-4">
-            <div className="flex items-center gap-3 border border-line bg-white px-4 py-3" data-testid="about-partner-badge">
-              <span className="font-display font-extrabold">OW</span>
-              <span className="text-gold font-mono">×</span>
-              <span className="font-display font-extrabold">WEIJING</span>
-              <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-600 ml-2">{c.distrib}</span>
-            </div>
             <button
               data-testid="about-quote-btn"
               onClick={() => scrollToId("contact")}
