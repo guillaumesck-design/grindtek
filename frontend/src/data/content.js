@@ -8,7 +8,7 @@ export const BRAND = {
   email: "contact@overkkast.com",
 };
 
-export const NAV = ["machines", "resultats", "comparatif", "roi", "processus", "europe", "faq"];
+export const NAV = ["machines", "resultats", "comparatif", "roi", "processus", "faq"];
 
 export const MATERIALS = ["fonte", "acier", "aluminium", "autre"];
 
@@ -35,11 +35,5 @@ export const SPEC_KEYS = ["dh", "load", "d1", "d2", "weight", "dims", "type"];
 export const DIFF_KEYS = ["prog", "setup", "fixture", "pre", "laser", "disc"];
 
 export const SERIES_KEYS = ["petite", "moyenne", "grande"];
-
-export const CITIES = [
-  [-0.13, 51.51], [4.35, 50.85], [4.9, 52.37], [6.13, 49.61], [13.4, 52.52], [11.58, 48.14], [8.54, 47.37], [9.19, 45.46],
-  [4.84, 45.76], [2.17, 41.39], [-3.7, 40.42], [-9.14, 38.72], [14.42, 50.08], [16.37, 48.21], [21.01, 52.23], [-0.58, 44.84],
-];
-export const LEFT_CITIES = [0, 9, 10, 11, 15, 8];
 
 export const GALLERY = ["/img/c1.webp", "/img/c2.webp", "/img/c3.webp", "/img/c4.webp", "/img/c5.webp", "/img/c6.webp", "/img/c7.webp"];

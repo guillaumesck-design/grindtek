@@ -25,6 +25,10 @@ voici un site internet que je souhaiterais entierement copié, l'objectif étant
 - Original OW SVG logo + favicon
 - Admin dashboard: login, list, status update, delete, filter, CSV export
 
+## Implemented (2026-10-08, iteration 4)
+- Removed marquee, About partner badge, Series circles (visual edits) and the Europe/zone d'intervention section (+ nav/footer link)
+- AW → OW rebranding of photos via AI image edit: 5 GV machines + cnc (original alpha re-applied), building (sede), mobile hero, gallery c2/c4/c5/c6/c7, desktop hero (partial: 2 small AW logos remain on GV270). Originals backed up in /app/frontend/aw_originals
+
 ## Implemented (2026-10-08, iteration 3)
 - 4 languages FR / PT / ES / EN (`src/i18n/*.js`, LangProvider + LangSwitcher in nav & mobile menu). FR default; manual choice saved in localStorage (`ow_lang`); `<html lang>` updated
 - Auto language by IP via `GET /api/geo` (CF-IPCountry header, else ipwho.is → ipapi.co fallback, in-memory cache): FR→fr, PT→pt, ES→es, ZA→en, others→fr. Only runs when no saved choice

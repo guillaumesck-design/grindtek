@@ -15,7 +15,6 @@ import { Series } from "@/components/site/Series";
 import { Comparison } from "@/components/site/Comparison";
 import { Roi } from "@/components/site/Roi";
 import { Process } from "@/components/site/Process";
-import { Europe } from "@/components/site/Europe";
 import { Faq } from "@/components/site/Faq";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
@@ -44,7 +43,6 @@ export default function Landing() {
         <Comparison />
         <Roi />
         <Process />
-        <Europe />
         <Faq />
         <Contact onLegal={setLegal} />
       </main>
