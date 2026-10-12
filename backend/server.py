@@ -126,7 +126,7 @@ async def current_admin(request: Request) -> dict:
 
 @api.get("/")
 async def root():
-    return {"message": "OW Auto Grinding API"}
+    return {"message": "GrindTek API"}
 
 
 def client_ip(request: Request) -> str:
@@ -285,7 +285,7 @@ async def startup():
     pwd = os.environ["ADMIN_PASSWORD"]
     existing = await db.users.find_one({"email": email})
     if existing is None:
-        await db.users.insert_one({"email": email, "password_hash": hash_password(pwd), "name": "Admin OW",
+        await db.users.insert_one({"email": email, "password_hash": hash_password(pwd), "name": "Admin GrindTek",
                                    "role": "admin", "created_at": datetime.now(timezone.utc).isoformat()})
     elif not verify_password(pwd, existing["password_hash"]):
         await db.users.update_one({"email": email}, {"$set": {"password_hash": hash_password(pwd)}})

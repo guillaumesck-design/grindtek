@@ -1,9 +1,9 @@
 export default {
   locale: "es-ES",
   pct: " %",
-  nav: { machines: "Máquinas", resultats: "Resultados", comparatif: "Comparativa", roi: "Calculadora ROI", processus: "Proceso", europe: "Europa", faq: "FAQ", quote: "Solicitar presupuesto", home: "Inicio OW Auto Grinding", lang: "Idioma" },
+  nav: { machines: "Máquinas", resultats: "Resultados", comparatif: "Comparativa", roi: "Calculadora ROI", processus: "Proceso", europe: "Europa", faq: "FAQ", quote: "Solicitar presupuesto", home: "Inicio GrindTek", lang: "Idioma" },
   hero: {
-    eyebrowL: "Ref. OW—GV · Desbarbado CNC 5 ejes", eyebrowR: "Fundición · Acero · Aluminio",
+    eyebrowL: "Ref. GrindTek · GV · Desbarbado CNC 5 ejes", eyebrowR: "Fundición · Acero · Aluminio",
     lines: ["Máquinas de", "desbarbado para", "piezas de "], accent: "fundición",
     lead: "Elimine el desbarbado manual, reduzca costes y estandarice el acabado.",
     b1: "Para piezas fundidas en acero, hierro fundido, aluminio y otras aleaciones.",
@@ -12,10 +12,10 @@ export default {
     alt: "Gama de máquinas CNC de desbarbado GV en showroom",
     stats: [["+116 %", "piezas / hora"], ["0 %", "rechazo en acabado"], ["< 15 min", "cambio de serie"]],
   },
-  marquee: ["Desbarbado automatizado", "Hierro fundido", "Acero", "Aluminio", "CNC 5 ejes", "Weijing × OW", "Cero rechazo", "Programación por puntos"],
+  marquee: ["Desbarbado automatizado", "Hierro fundido", "Acero", "Aluminio", "CNC 5 ejes", "Weijing × GrindTek", "Cero rechazo", "Programación por puntos"],
   intro: {
     label: "Soluciones", lines: ["Soluciones CNC para el", "desbarbado automatizado de", "sus piezas de fundición."],
-    text: "OW Auto Grinding ofrece máquinas CNC de 5 ejes especializadas en el desbarbado automatizado de piezas fundidas en bruto.",
+    text: "GrindTek ofrece máquinas CNC de 5 ejes especializadas en el desbarbado automatizado de piezas fundidas en bruto.",
     cta: "Solicitar una evaluación", apps: "Aplicaciones", list: ["Hierro fundido", "Acero", "Aluminio", "Otros materiales fundidos"],
   },
   machines: {
@@ -46,8 +46,8 @@ export default {
     ],
   },
   about: {
-    label: "Quiénes somos", lines: ["Sobre", "OW Auto Grinding"], fig: "Fig. 07 — Sede del socio", alt: "Sede del socio AW Auto Grinding", distrib: "Distribución Europa", cta: "Solicitar presupuesto",
-    p1: "OW Auto Grinding aporta soluciones CNC de desbarbado automatizado con un objetivo claro: aumentar la productividad de las fundiciones y reducir los costes del área de acabado.",
+    label: "Quiénes somos", lines: ["Sobre", "GrindTek"], fig: "Fig. 07 — Sede del socio", alt: "Edificio GrindTek", distrib: "Distribución Europa", cta: "Solicitar presupuesto",
+    p1: "GrindTek aporta soluciones CNC de desbarbado automatizado con un objetivo claro: aumentar la productividad de las fundiciones y reducir los costes del área de acabado.",
     p2: "Acompañamos la modernización de los procesos productivos, reduciendo la dependencia de la mano de obra manual y reforzando la competitividad de las fundiciones.",
     p3a: "En colaboración con", p3b: ", fabricante internacional de referencia, ponemos a su disposición máquinas CNC de 5 ejes desarrolladas específicamente para aplicaciones de fundición.",
   },
@@ -77,7 +77,7 @@ export default {
   },
   compare: {
     label: "Comparativa", lines: ["¿Nuestra CNC, una célula", "robotizada o el", "desbarbado manual?"], text: "Tres enfoques del acabado, comparados criterio por criterio.",
-    crit: "Criterio", rec: "Recomendado", cols: ["CNC OW Auto Grinding", "Célula robotizada", "Desbarbado manual"],
+    crit: "Criterio", rec: "Recomendado", cols: ["CNC GrindTek", "Célula robotizada", "Desbarbado manual"],
     rows: [
       ["Inversión inicial", "Muy inferior a una célula robotizada", "Elevada (robot, periféricos, integración)", "Baja en equipos, elevada en mano de obra"],
       ["Utillaje", "Cuna simple, rápida y económica", "Garras y posicionadores específicos", "Ninguno, pero depende del operario"],
@@ -111,7 +111,7 @@ export default {
   },
   europe: {
     label: "Zona de intervención", lines: ["Desde Francia,", "al servicio de las fundiciones", "europeas."],
-    text: "OW Auto Grinding distribuye las máquinas CNC de desbarbado Weijing en Europa. Nuestra base está en Aisne, en el norte de Francia, cerca de los grandes polos de fundición europeos.",
+    text: "GrindTek distribuye las máquinas CNC de desbarbado Weijing en Europa. Nuestra base está en Aisne, en el norte de Francia, cerca de los grandes polos de fundición europeos.",
     base: "Nuestra base", note: "Los círculos indican las distancias desde nuestra base. Contáctenos para cualquier intervención en Europa.", fig: "Fig. 13 — Radio de acción",
     cities: ["Londres", "Bruselas", "Ámsterdam", "Luxemburgo", "Berlín", "Múnich", "Zúrich", "Milán", "Lyon", "Barcelona", "Madrid", "Lisboa", "Praga", "Viena", "Varsovia", "Burdeos"],
   },
@@ -124,7 +124,7 @@ export default {
       { q: "¿Quién programa la máquina?", a: "Su equipo interno. La programación se realiza por puntos, mediante una interfaz diseñada específicamente para el desbarbado." },
       { q: "¿Qué tamaño de pieza se puede tratar?", a: "Desde 350 × 200 mm (25 kg pieza + utillaje) en la GV 120 hasta 1000 × 400 mm (120 kg) en la GV 2100." },
       { q: "¿Qué ganancias se pueden esperar?", a: "En nuestro caso de referencia, la productividad pasó de 60 a 130 piezas/hora por operario (+116 %) y el rechazo en acabado del 3 % al 0 %. Cada proyecto comienza con una evaluación técnica." },
-      { q: "¿Quién fabrica las máquinas?", a: "Las máquinas las desarrolla Weijing, fabricante internacional de referencia, con quien OW Auto Grinding colabora en la distribución." },
+      { q: "¿Quién fabrica las máquinas?", a: "Las máquinas las desarrolla Weijing, fabricante internacional de referencia, con quien GrindTek colabora en la distribución." },
       { q: "¿Cómo obtener un presupuesto?", a: "Rellene el formulario de solicitud: nos pondremos en contacto para estudiar sus piezas y proponerle la configuración adecuada." },
     ],
   },
@@ -143,7 +143,7 @@ export default {
   legal: {
     legalTitle: "Aviso legal", privacyTitle: "Política de privacidad",
     legalSections: [
-      ["Editor del sitio", ["El sitio {domain} es editado por {company}, sociedad por acciones simplificada (SAS) de derecho francés con un capital de [capital social por completar] €, inscrita en el RCS de Saint-Quentin con el número 105 785 745.", "SIRET: 105 785 745 00016 — IVA intracomunitario: FR19105785745", "Domicilio social: {address}", "Teléfono: {phone} — E-mail: {email}", "OW Auto Grinding es una marca explotada por {company}."]],
+      ["Editor del sitio", ["El sitio {domain} es editado por {company}, sociedad por acciones simplificada (SAS) de derecho francés con un capital de [capital social por completar] €, inscrita en el RCS de Saint-Quentin con el número 105 785 745.", "SIRET: 105 785 745 00016 — IVA intracomunitario: FR19105785745", "Domicilio social: {address}", "Teléfono: {phone} — E-mail: {email}", "GrindTek es una marca explotada por {company}."]],
       ["Director de la publicación", ["Guillaume Allart, Presidente."]],
       ["Alojamiento", ["[Nombre del proveedor de alojamiento, dirección y teléfono por completar]"]],
       ["Propiedad intelectual", ["Todos los contenidos de este sitio (textos, imágenes, logotipos, marcas) están protegidos por la propiedad intelectual. Queda prohibida cualquier reproducción o representación, total o parcial, sin autorización previa por escrito. Las imágenes de las máquinas se utilizan con el acuerdo de nuestros socios."]],
@@ -153,7 +153,7 @@ export default {
       ["Responsable del tratamiento", ["{company}, {address}. Contacto: {email}."]],
       ["Datos recogidos", ["A través del formulario de solicitud de presupuesto: nombre, empresa, teléfono, e-mail profesional, material principal, máquina de interés, mensaje opcional e idioma de visualización."]],
       ["Finalidades y base jurídica", ["Tramitar su solicitud de presupuesto, enviarle un acuse de recibo y realizar el seguimiento comercial, sobre la base de medidas precontractuales adoptadas a petición suya y de nuestro interés legítimo en responder a solicitudes profesionales."]],
-      ["Destinatarios", ["Los datos están reservados a los equipos comerciales y técnicos de OW Auto Grinding. No se venden ni se ceden a terceros."]],
+      ["Destinatarios", ["Los datos están reservados a los equipos comerciales y técnicos de GrindTek. No se venden ni se ceden a terceros."]],
       ["Plazo de conservación", ["Tres años desde el último contacto; después se eliminan o anonimizan."]],
       ["Sus derechos", ["Conforme al RGPD, dispone de los derechos de acceso, rectificación, supresión, limitación, oposición y portabilidad. Para ejercerlos: {email}. También puede presentar una reclamación ante la CNIL (www.cnil.fr) o la autoridad de control de su país."]],
       ["Cookies y almacenamiento local", ["Este sitio no utiliza cookies publicitarias ni de medición de audiencia. Su elección de idioma se guarda en su navegador y su dirección IP solo se utiliza para proponer automáticamente el idioma de su país, sin conservarse. Solo pueden instalarse cookies técnicas estrictamente necesarias (sesión del área de administración)."]],

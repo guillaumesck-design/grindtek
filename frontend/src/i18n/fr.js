@@ -1,9 +1,9 @@
 export default {
   locale: "fr-FR",
   pct: " %",
-  nav: { machines: "Machines", resultats: "Résultats", comparatif: "Comparatif", roi: "Calculateur ROI", processus: "Processus", europe: "Europe", faq: "FAQ", quote: "Demander un devis", home: "Accueil OW Auto Grinding", lang: "Langue" },
+  nav: { machines: "Machines", resultats: "Résultats", comparatif: "Comparatif", roi: "Calculateur ROI", processus: "Processus", europe: "Europe", faq: "FAQ", quote: "Demander un devis", home: "Accueil GrindTek", lang: "Langue" },
   hero: {
-    eyebrowL: "Réf. OW—GV · Ébavurage CNC 5 axes", eyebrowR: "Fonte · Acier · Aluminium",
+    eyebrowL: "Réf. GrindTek · GV · Ébavurage CNC 5 axes", eyebrowR: "Fonte · Acier · Aluminium",
     lines: ["Machines", "d'ébavurage pour", "pièces de "], accent: "fonderie",
     lead: "Supprimez l'ébavurage manuel, réduisez vos coûts et standardisez la finition.",
     b1: "Pour pièces de fonderie en acier, fonte, aluminium et autres alliages.",
@@ -12,10 +12,10 @@ export default {
     alt: "Gamme de machines CNC d'ébavurage GV en showroom",
     stats: [["+116 %", "pièces / heure"], ["0 %", "rebut en finition"], ["< 15 min", "changement de série"]],
   },
-  marquee: ["Ébavurage automatisé", "Fonte", "Acier", "Aluminium", "CNC 5 axes", "Weijing × OW", "Zéro rebut", "Programmation par points"],
+  marquee: ["Ébavurage automatisé", "Fonte", "Acier", "Aluminium", "CNC 5 axes", "Weijing × GrindTek", "Zéro rebut", "Programmation par points"],
   intro: {
     label: "Solutions", lines: ["Des solutions CNC pour", "l'ébavurage automatisé de", "vos pièces de fonderie."],
-    text: "OW Auto Grinding propose des machines CNC 5 axes spécialisées dans l'ébavurage automatisé des pièces brutes de fonderie.",
+    text: "GrindTek propose des machines CNC 5 axes spécialisées dans l'ébavurage automatisé des pièces brutes de fonderie.",
     cta: "Demander une évaluation", apps: "Applications traitées", list: ["Fonte", "Acier", "Aluminium", "Autres matériaux de fonderie"],
   },
   machines: {
@@ -46,8 +46,8 @@ export default {
     ],
   },
   about: {
-    label: "À propos", lines: ["À propos", "d'OW Auto Grinding"], fig: "Fig. 07 — Site partenaire", alt: "Site du partenaire AW Auto Grinding", distrib: "Distribution Europe", cta: "Demander un devis",
-    p1: "OW Auto Grinding apporte des solutions CNC d'ébavurage automatisé, avec un objectif clair : augmenter la productivité des fonderies et réduire les coûts du poste de parachèvement.",
+    label: "À propos", lines: ["À propos", "de GrindTek"], fig: "Fig. 07 — Site partenaire", alt: "Bâtiment GrindTek", distrib: "Distribution Europe", cta: "Demander un devis",
+    p1: "GrindTek apporte des solutions CNC d'ébavurage automatisé, avec un objectif clair : augmenter la productivité des fonderies et réduire les coûts du poste de parachèvement.",
     p2: "Nous accompagnons la modernisation des process de production, en réduisant la dépendance à la main-d'œuvre manuelle et en renforçant la compétitivité des fonderies européennes.",
     p3a: "En partenariat avec", p3b: ", fabricant international de référence, nous mettons à disposition en Europe des machines CNC 5 axes développées spécifiquement pour les applications de fonderie.",
   },
@@ -77,7 +77,7 @@ export default {
   },
   compare: {
     label: "Comparatif", lines: ["Notre CNC, une cellule", "robotisée ou l'ébavurage", "manuel ?"], text: "Trois approches du parachèvement, comparées critère par critère.",
-    crit: "Critère", rec: "Recommandé", cols: ["CNC OW Auto Grinding", "Cellule robotisée", "Ébavurage manuel"],
+    crit: "Critère", rec: "Recommandé", cols: ["CNC GrindTek", "Cellule robotisée", "Ébavurage manuel"],
     rows: [
       ["Investissement initial", "Nettement inférieur à une cellule robotisée", "Élevé (robot, périphériques, intégration)", "Faible en matériel, élevé en main-d'œuvre"],
       ["Fixtures / outillage", "Berceau simple, rapide et peu coûteux", "Préhenseurs et posages spécifiques", "Aucun, mais dépend du geste de l'opérateur"],
@@ -111,7 +111,7 @@ export default {
   },
   europe: {
     label: "Zone d'intervention", lines: ["Depuis la France,", "au service des fonderies", "européennes."],
-    text: "OW Auto Grinding distribue les machines CNC d'ébavurage Weijing en Europe. Notre base se situe dans l'Aisne, au cœur du nord de la France, à proximité des grands bassins de fonderie européens.",
+    text: "GrindTek distribue les machines CNC d'ébavurage Weijing en Europe. Notre base se situe dans l'Aisne, au cœur du nord de la France, à proximité des grands bassins de fonderie européens.",
     base: "Notre base", note: "Les cercles indiquent les distances depuis notre base. Contactez-nous pour toute intervention en Europe.", fig: "Fig. 13 — Rayon d'action",
     cities: ["Londres", "Bruxelles", "Amsterdam", "Luxembourg", "Berlin", "Munich", "Zurich", "Milan", "Lyon", "Barcelone", "Madrid", "Lisbonne", "Prague", "Vienne", "Varsovie", "Bordeaux"],
   },
@@ -124,7 +124,7 @@ export default {
       { q: "Qui programme la machine ?", a: "Vos équipes internes. La programmation se fait par points, via une interface conçue spécifiquement pour l'ébavurage." },
       { q: "Quelle taille de pièce peut-on traiter ?", a: "De 350 × 200 mm (25 kg pièce + fixture) sur la GV 120 jusqu'à 1 000 × 400 mm (120 kg) sur la GV 2100." },
       { q: "Quels gains peut-on espérer ?", a: "Dans notre cas de référence, la productivité est passée de 60 à 130 pièces/heure pour un opérateur (+116 %) et le rebut en finition de 3 % à 0 %. Chaque projet fait l'objet d'une évaluation technique." },
-      { q: "Qui fabrique les machines ?", a: "Les machines sont développées par Weijing, fabricant international de référence, avec qui OW Auto Grinding collabore pour la distribution en Europe." },
+      { q: "Qui fabrique les machines ?", a: "Les machines sont développées par Weijing, fabricant international de référence, avec qui GrindTek collabore pour la distribution en Europe." },
       { q: "Comment obtenir un devis ?", a: "Remplissez le formulaire de demande de devis : nous vous recontactons pour étudier vos pièces et vous proposer la configuration adaptée." },
     ],
   },
@@ -143,7 +143,7 @@ export default {
   legal: {
     legalTitle: "Mentions légales", privacyTitle: "Politique de confidentialité",
     legalSections: [
-      ["Éditeur du site", ["Le site {domain} est édité par {company}, société par actions simplifiée au capital de [capital social à compléter] €, immatriculée au RCS de Saint-Quentin sous le numéro 105 785 745.", "SIRET : 105 785 745 00016 — TVA intracommunautaire : FR19105785745", "Siège social : {address}", "Téléphone : {phone} — E-mail : {email}", "OW Auto Grinding est une marque exploitée par {company}."]],
+      ["Éditeur du site", ["Le site {domain} est édité par {company}, société par actions simplifiée au capital de [capital social à compléter] €, immatriculée au RCS de Saint-Quentin sous le numéro 105 785 745.", "SIRET : 105 785 745 00016 — TVA intracommunautaire : FR19105785745", "Siège social : {address}", "Téléphone : {phone} — E-mail : {email}", "GrindTek est une marque exploitée par {company}."]],
       ["Directeur de la publication", ["Guillaume Allart, Président."]],
       ["Hébergement", ["[Nom de l'hébergeur, adresse et téléphone à compléter]"]],
       ["Propriété intellectuelle", ["L'ensemble des contenus de ce site (textes, visuels, logos, marques) est protégé par le droit de la propriété intellectuelle. Toute reproduction ou représentation, totale ou partielle, sans autorisation écrite préalable est interdite. Les visuels des machines sont utilisés avec l'accord de nos partenaires."]],
@@ -153,7 +153,7 @@ export default {
       ["Responsable du traitement", ["{company}, {address}. Contact : {email}."]],
       ["Données collectées", ["Via le formulaire de demande de devis : nom, entreprise, téléphone, e-mail professionnel, matériau principal, machine d'intérêt, message éventuel et langue d'affichage."]],
       ["Finalités et base légale", ["Traiter votre demande de devis, vous envoyer un accusé de réception et assurer le suivi commercial associé, sur la base de mesures précontractuelles prises à votre demande et de notre intérêt légitime à répondre aux sollicitations professionnelles."]],
-      ["Destinataires", ["Les données sont réservées aux équipes commerciales et techniques d'OW Auto Grinding. Elles ne sont ni vendues ni cédées à des tiers."]],
+      ["Destinataires", ["Les données sont réservées aux équipes commerciales et techniques d'GrindTek. Elles ne sont ni vendues ni cédées à des tiers."]],
       ["Durée de conservation", ["Trois ans à compter du dernier contact, puis suppression ou anonymisation."]],
       ["Vos droits", ["Conformément au RGPD et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité. Pour l'exercer : {email}. Vous pouvez également introduire une réclamation auprès de la CNIL (www.cnil.fr)."]],
       ["Cookies et stockage local", ["Ce site n'utilise pas de cookies publicitaires ni de mesure d'audience. Votre choix de langue est mémorisé dans votre navigateur et votre adresse IP sert uniquement à proposer automatiquement la langue de votre pays, sans être conservée. Seuls des cookies techniques strictement nécessaires (session de l'espace administrateur) peuvent être déposés."]],

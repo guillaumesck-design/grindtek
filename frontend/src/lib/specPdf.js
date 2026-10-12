@@ -19,28 +19,13 @@ const loadImg = async (src) => {
   });
 };
 
-const drawMark = (doc, cx, cy, s) => {
-  const k = s / 32;
-  doc.setLineCap("round");
-  doc.setLineJoin("round");
-  doc.setDrawColor(255, 255, 255);
-  doc.setLineWidth(3 * k);
-  doc.circle(cx, cy, 11.5 * k, "S");
-  doc.setDrawColor(...GOLD);
-  doc.setLineWidth(2.6 * k);
-  doc.lines([[3 * k, 8.5 * k], [4 * k, -6 * k], [4 * k, 6 * k], [3 * k, -8.5 * k]], cx - 7 * k, cy - 4 * k, [1, 1], "S", false);
-};
-
-const header = (doc, t) => {
+const header = (doc, t, logo) => {
   doc.setFillColor(...INK);
   doc.rect(0, 0, 210, 30, "F");
   doc.setFillColor(...GOLD);
   doc.rect(0, 30, 210, 1, "F");
-  drawMark(doc, 26, 15, 16);
-  doc.setTextColor(255, 255, 255);
-  doc.setFont("helvetica", "bold").setFontSize(15).text("OW", 37, 14.5);
-  doc.setFont("courier", "normal").setFontSize(7).setTextColor(203, 213, 225).text("AUTO GRINDING", 37, 19.5);
-  doc.setTextColor(...GOLD).setFontSize(8).text(t.pdf.sheet, R, 13.5, { align: "right" });
+  doc.addImage(logo, "PNG", 20, 7, 44, 16);
+  doc.setFont("courier", "normal").setTextColor(...GOLD).setFontSize(8).text(t.pdf.sheet, R, 13.5, { align: "right" });
   doc.setTextColor(255, 255, 255).text(BRAND.domain, R, 19.5, { align: "right" });
 };
 
@@ -106,7 +91,7 @@ const footer = (doc, t) => {
   doc.setFillColor(...GOLD).rect(0, 262, 210, 0.8, "F");
   doc.setFont("helvetica", "bold").setFontSize(11).setTextColor(255, 255, 255).text(t.pdf.cta, 20, 273);
   doc.setFont("helvetica", "normal").setFontSize(8.5).setTextColor(203, 213, 225);
-  doc.text(`OW Auto Grinding — ${BRAND.company}`, 20, 280);
+  doc.text(`GrindTek — ${BRAND.company}`, 20, 280);
   doc.text(BRAND.address, 20, 285);
   doc.setTextColor(...GOLD).text(`${t.pdf.tel} ${BRAND.phone}  ·  ${BRAND.email}  ·  ${BRAND.domain}`, 20, 290);
   doc.setFontSize(6.5).setTextColor(203, 213, 225).text(t.pdf.disc1, R, 280, { align: "right" });
@@ -115,13 +100,13 @@ const footer = (doc, t) => {
 
 export async function downloadSpecPdf(m, t) {
   const doc = new jsPDF({ unit: "mm", format: "a4" });
-  doc.setProperties({ title: `${t.pdf.sheet} ${m.id} — OW Auto Grinding`, author: "OW Auto Grinding" });
-  const img = await loadImg(m.img);
-  header(doc, t);
+  doc.setProperties({ title: `${t.pdf.sheet} ${m.id} — GrindTek`, author: "GrindTek" });
+  const [img, logo] = await Promise.all([loadImg(m.img), loadImg("/img/grindtek-logo-light.png")]);
+  header(doc, t, logo);
   title(doc, m, t);
   specs(doc, m, img, t);
   results(doc, t);
   advantages(doc, t);
   footer(doc, t);
-  doc.save(`OW-Auto-Grinding-${m.id.replace(" ", "")}-${t.pdf.file}.pdf`);
+  doc.save(`GrindTek-${m.id.replace(" ", "")}-${t.pdf.file}.pdf`);
 }

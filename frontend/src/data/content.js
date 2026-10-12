@@ -1,6 +1,6 @@
 export const BRAND = {
-  name: "OW Auto Grinding",
-  domain: "www.owgrinding.com",
+  name: "GrindTek",
+  domain: "www.grindtek-automation.com",
   company: "OVERKKAST SAS",
   address: "Route de Moyembrie, 02380 Coucy-le-Château-Auffrique, France",
   phone: "01 84 80 86 99",

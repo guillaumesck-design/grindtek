@@ -31,9 +31,9 @@ export const Footer = ({ onLegal }) => {
           <p>{BRAND.domain}</p>
         </div>
       </div>
-      <div className="font-display font-extrabold text-[17vw] md:text-[12vw] leading-[0.8] text-outline mt-14 select-none" aria-hidden="true">OW GRINDING</div>
+      <div className="font-display font-extrabold text-[17vw] md:text-[12vw] leading-[0.8] text-outline mt-14 select-none" aria-hidden="true">GRINDTEK</div>
       <div className="mt-8 pt-6 border-t border-line flex flex-wrap items-center justify-between gap-4 text-xs text-slate-600">
-        <span>© {new Date().getFullYear()} OW Auto Grinding — {BRAND.company}. {c.rights}</span>
+        <span>© {new Date().getFullYear()} GrindTek — {BRAND.company}. {c.rights}</span>
         <div className="flex flex-wrap gap-5">
           <button data-testid="footer-legal-btn" onClick={() => onLegal("legal")} className="hover:text-ink underline-offset-4 hover:underline">{c.legal}</button>
           <button data-testid="footer-privacy-btn" onClick={() => onLegal("privacy")} className="hover:text-ink underline-offset-4 hover:underline">{c.privacy}</button>

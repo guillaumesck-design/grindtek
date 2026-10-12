@@ -25,6 +25,11 @@ voici un site internet que je souhaiterais entierement copié, l'objectif étant
 - Original OW SVG logo + favicon
 - Admin dashboard: login, list, status update, delete, filter, CSV export
 
+## Implemented (2026-10-12, iteration 5)
+- Rebrand OW Auto Grinding → GrindTek (by Overkkast) everywhere: logo PNG (dark/light versions, nav/footer/admin/PDF), favicon (arrow mark), all 4 languages, title/meta/canonical, emails (from name + header), PDF filename, footer wordmark
+- Domain → www.grindtek-automation.com (site, SITE_URL, canonical). Admin login → admin@grindtek-automation.com (old admin removed)
+- Photos rebranded to GrindTek via AI edit (5 machines + cnc, building, hero desktop + mobile, gallery c2/c4/c5/c6/c7); manual patch on hero GV270 band. OW versions backed up in /app/frontend/ow_versions
+
 ## Implemented (2026-10-08, iteration 4)
 - Removed marquee, About partner badge, Series circles (visual edits) and the Europe/zone d'intervention section (+ nav/footer link)
 - AW → OW rebranding of photos via AI image edit: 5 GV machines + cnc (original alpha re-applied), building (sede), mobile hero, gallery c2/c4/c5/c6/c7, desktop hero (partial: 2 small AW logos remain on GV270). Originals backed up in /app/frontend/aw_originals

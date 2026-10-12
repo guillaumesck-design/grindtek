@@ -1,9 +1,9 @@
 export default {
   locale: "en-ZA",
   pct: "%",
-  nav: { machines: "Machines", resultats: "Results", comparatif: "Comparison", roi: "ROI calculator", processus: "Process", europe: "Coverage", faq: "FAQ", quote: "Request a quote", home: "OW Auto Grinding home", lang: "Language" },
+  nav: { machines: "Machines", resultats: "Results", comparatif: "Comparison", roi: "ROI calculator", processus: "Process", europe: "Coverage", faq: "FAQ", quote: "Request a quote", home: "GrindTek home", lang: "Language" },
   hero: {
-    eyebrowL: "Ref. OW—GV · 5-axis CNC deburring", eyebrowR: "Cast iron · Steel · Aluminium",
+    eyebrowL: "Ref. GrindTek · GV · 5-axis CNC deburring", eyebrowR: "Cast iron · Steel · Aluminium",
     lines: ["Deburring", "machines for", "foundry "], accent: "castings",
     lead: "Eliminate manual fettling, cut costs and standardise your finish.",
     b1: "For castings in steel, cast iron, aluminium and other alloys.",
@@ -12,10 +12,10 @@ export default {
     alt: "GV range of CNC deburring machines in the showroom",
     stats: [["+116%", "parts / hour"], ["0%", "finishing scrap"], ["< 15 min", "changeover"]],
   },
-  marquee: ["Automated deburring", "Cast iron", "Steel", "Aluminium", "5-axis CNC", "Weijing × OW", "Zero scrap", "Point-based programming"],
+  marquee: ["Automated deburring", "Cast iron", "Steel", "Aluminium", "5-axis CNC", "Weijing × GrindTek", "Zero scrap", "Point-based programming"],
   intro: {
     label: "Solutions", lines: ["CNC solutions for", "automated deburring of", "your castings."],
-    text: "OW Auto Grinding supplies 5-axis CNC machines specialised in the automated deburring and fettling of raw castings.",
+    text: "GrindTek supplies 5-axis CNC machines specialised in the automated deburring and fettling of raw castings.",
     cta: "Request an assessment", apps: "Applications", list: ["Cast iron", "Steel", "Aluminium", "Other cast materials"],
   },
   machines: {
@@ -46,8 +46,8 @@ export default {
     ],
   },
   about: {
-    label: "About", lines: ["About", "OW Auto Grinding"], fig: "Fig. 07 — Partner site", alt: "AW Auto Grinding partner site", distrib: "European distribution", cta: "Request a quote",
-    p1: "OW Auto Grinding delivers automated CNC deburring solutions with one clear goal: raising foundry productivity and lowering finishing costs.",
+    label: "About", lines: ["About", "GrindTek"], fig: "Fig. 07 — Partner site", alt: "GrindTek building", distrib: "European distribution", cta: "Request a quote",
+    p1: "GrindTek delivers automated CNC deburring solutions with one clear goal: raising foundry productivity and lowering finishing costs.",
     p2: "We support the modernisation of production processes, reducing reliance on manual labour and strengthening the competitiveness of foundries.",
     p3a: "In partnership with", p3b: ", a leading international manufacturer, we supply 5-axis CNC machines developed specifically for foundry applications.",
   },
@@ -77,7 +77,7 @@ export default {
   },
   compare: {
     label: "Comparison", lines: ["Our CNC, a robotic cell", "or manual deburring?"], text: "Three approaches to finishing, compared criterion by criterion.",
-    crit: "Criterion", rec: "Recommended", cols: ["OW Auto Grinding CNC", "Robotic cell", "Manual deburring"],
+    crit: "Criterion", rec: "Recommended", cols: ["GrindTek CNC", "Robotic cell", "Manual deburring"],
     rows: [
       ["Initial investment", "Far lower than a robotic cell", "High (robot, peripherals, integration)", "Low on equipment, high on labour"],
       ["Fixtures / tooling", "Simple cradle, quick and inexpensive", "Specific grippers and jigs", "None, but depends on operator skill"],
@@ -111,7 +111,7 @@ export default {
   },
   europe: {
     label: "Coverage", lines: ["From France,", "serving foundries", "across Europe."],
-    text: "OW Auto Grinding distributes Weijing CNC deburring machines in Europe. Our base is in the Aisne region of northern France, close to Europe's major foundry clusters.",
+    text: "GrindTek distributes Weijing CNC deburring machines in Europe. Our base is in the Aisne region of northern France, close to Europe's major foundry clusters.",
     base: "Our base", note: "Circles show distances from our base. Contact us for any project in Europe and beyond.", fig: "Fig. 13 — Reach",
     cities: ["London", "Brussels", "Amsterdam", "Luxembourg", "Berlin", "Munich", "Zurich", "Milan", "Lyon", "Barcelona", "Madrid", "Lisbon", "Prague", "Vienna", "Warsaw", "Bordeaux"],
   },
@@ -124,7 +124,7 @@ export default {
       { q: "Who programs the machine?", a: "Your in-house team. Programming is point-based, through an interface designed specifically for deburring." },
       { q: "What part sizes can be handled?", a: "From 350 × 200 mm (25 kg part + fixture) on the GV 120 up to 1,000 × 400 mm (120 kg) on the GV 2100." },
       { q: "What gains can we expect?", a: "In our reference case, productivity rose from 60 to 130 parts/hour for one operator (+116%) and finishing scrap fell from 3% to 0%. Every project starts with a technical assessment." },
-      { q: "Who manufactures the machines?", a: "The machines are developed by Weijing, a leading international manufacturer, with whom OW Auto Grinding works on distribution." },
+      { q: "Who manufactures the machines?", a: "The machines are developed by Weijing, a leading international manufacturer, with whom GrindTek works on distribution." },
       { q: "How do I get a quote?", a: "Fill in the quote request form: we will contact you to study your parts and propose the right configuration." },
     ],
   },
@@ -143,7 +143,7 @@ export default {
   legal: {
     legalTitle: "Legal notice", privacyTitle: "Privacy policy",
     legalSections: [
-      ["Publisher", ["The website {domain} is published by {company}, a French simplified joint-stock company (SAS) with a share capital of [share capital to be completed] €, registered with the Saint-Quentin Trade and Companies Register under number 105 785 745.", "SIRET: 105 785 745 00016 — EU VAT: FR19105785745", "Registered office: {address}", "Phone: {phone} — Email: {email}", "OW Auto Grinding is a brand operated by {company}."]],
+      ["Publisher", ["The website {domain} is published by {company}, a French simplified joint-stock company (SAS) with a share capital of [share capital to be completed] €, registered with the Saint-Quentin Trade and Companies Register under number 105 785 745.", "SIRET: 105 785 745 00016 — EU VAT: FR19105785745", "Registered office: {address}", "Phone: {phone} — Email: {email}", "GrindTek is a brand operated by {company}."]],
       ["Publication director", ["Guillaume Allart, President."]],
       ["Hosting", ["[Host name, address and phone number to be completed]"]],
       ["Intellectual property", ["All content on this website (texts, visuals, logos, trademarks) is protected by intellectual property law. Any full or partial reproduction or representation without prior written permission is prohibited. Machine visuals are used with the consent of our partners."]],
@@ -153,7 +153,7 @@ export default {
       ["Data controller", ["{company}, {address}. Contact: {email}."]],
       ["Data collected", ["Through the quote request form: name, company, phone, business email, main material, machine of interest, optional message and display language."]],
       ["Purposes and legal basis", ["Processing your quote request, sending you an acknowledgement and handling the related commercial follow-up, based on pre-contractual measures taken at your request and our legitimate interest in answering business enquiries."]],
-      ["Recipients", ["Data is reserved for the sales and technical teams of OW Auto Grinding. It is never sold or transferred to third parties."]],
+      ["Recipients", ["Data is reserved for the sales and technical teams of GrindTek. It is never sold or transferred to third parties."]],
       ["Retention period", ["Three years from the last contact, then deleted or anonymised."]],
       ["Your rights", ["Under the GDPR you have the right of access, rectification, erasure, restriction, objection and portability. To exercise them: {email}. You may also lodge a complaint with the French data protection authority, the CNIL (www.cnil.fr)."]],
       ["Cookies and local storage", ["This website uses no advertising or analytics cookies. Your language choice is stored in your browser, and your IP address is only used to suggest your country's language automatically, without being stored. Only strictly necessary technical cookies (admin session) may be set."]],
