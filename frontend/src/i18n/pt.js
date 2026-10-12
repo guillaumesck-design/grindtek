@@ -46,8 +46,8 @@ export default {
     ],
   },
   about: {
-    label: "Sobre nós", lines: ["Sobre a", "GrindTek"], fig: "Fig. 07 — Instalações do parceiro", alt: "Edifício GrindTek", distrib: "Distribuição Europa", cta: "Pedir orçamento",
-    p1: "A GrindTek oferece soluções CNC de rebarbagem automatizada com um objetivo claro: aumentar a produtividade das fundições e reduzir os custos do setor de acabamento.",
+    label: "Sobre nós", lines: ["Sobre a", "GrindTek Automation"], fig: "Fig. 07 — Instalações do parceiro", alt: "Edifício GrindTek Automation", distrib: "Distribuição Europa", cta: "Pedir orçamento",
+    p1: "A GrindTek Automation oferece soluções CNC de rebarbagem automatizada com um objetivo claro: aumentar a produtividade das fundições e reduzir os custos do setor de acabamento.",
     p2: "Apoiamos a modernização dos processos produtivos, reduzindo a dependência da mão de obra manual e reforçando a competitividade das fundições.",
     p3a: "Em parceria com a", p3b: ", fabricante internacional de referência, disponibilizamos máquinas CNC de 5 eixos desenvolvidas especificamente para aplicações de fundição.",
   },

@@ -46,8 +46,8 @@ export default {
     ],
   },
   about: {
-    label: "About", lines: ["About", "GrindTek"], fig: "Fig. 07 — Partner site", alt: "GrindTek building", distrib: "European distribution", cta: "Request a quote",
-    p1: "GrindTek delivers automated CNC deburring solutions with one clear goal: raising foundry productivity and lowering finishing costs.",
+    label: "About", lines: ["About", "GrindTek Automation"], fig: "Fig. 07 — Partner site", alt: "GrindTek Automation building", distrib: "European distribution", cta: "Request a quote",
+    p1: "GrindTek Automation delivers automated CNC deburring solutions with one clear goal: raising foundry productivity and lowering finishing costs.",
     p2: "We support the modernisation of production processes, reducing reliance on manual labour and strengthening the competitiveness of foundries.",
     p3a: "In partnership with", p3b: ", a leading international manufacturer, we supply 5-axis CNC machines developed specifically for foundry applications.",
   },

@@ -46,8 +46,8 @@ export default {
     ],
   },
   about: {
-    label: "Quiénes somos", lines: ["Sobre", "GrindTek"], fig: "Fig. 07 — Sede del socio", alt: "Edificio GrindTek", distrib: "Distribución Europa", cta: "Solicitar presupuesto",
-    p1: "GrindTek aporta soluciones CNC de desbarbado automatizado con un objetivo claro: aumentar la productividad de las fundiciones y reducir los costes del área de acabado.",
+    label: "Quiénes somos", lines: ["Sobre", "GrindTek Automation"], fig: "Fig. 07 — Sede del socio", alt: "Edificio GrindTek Automation", distrib: "Distribución Europa", cta: "Solicitar presupuesto",
+    p1: "GrindTek Automation aporta soluciones CNC de desbarbado automatizado con un objetivo claro: aumentar la productividad de las fundiciones y reducir los costes del área de acabado.",
     p2: "Acompañamos la modernización de los procesos productivos, reduciendo la dependencia de la mano de obra manual y reforzando la competitividad de las fundiciones.",
     p3a: "En colaboración con", p3b: ", fabricante internacional de referencia, ponemos a su disposición máquinas CNC de 5 ejes desarrolladas específicamente para aplicaciones de fundición.",
   },
