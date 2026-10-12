@@ -15,7 +15,7 @@ export default {
   marquee: ["Ébavurage automatisé", "Fonte", "Acier", "Aluminium", "CNC 5 axes", "Weijing × GrindTek", "Zéro rebut", "Programmation par points"],
   intro: {
     label: "Solutions", lines: ["Des solutions CNC pour", "l'ébavurage automatisé de", "vos pièces de fonderie."],
-    text: "GrindTek propose des machines CNC 5 axes spécialisées dans l'ébavurage automatisé des pièces brutes de fonderie.",
+    text: "GrindTek Automation propose des machines CNC 5 axes spécialisées dans l'ébavurage automatisé des pièces brutes de fonderie.",
     cta: "Demander une évaluation", apps: "Applications traitées", list: ["Fonte", "Acier", "Aluminium", "Autres matériaux de fonderie"],
   },
   machines: {

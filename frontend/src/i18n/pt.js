@@ -15,7 +15,7 @@ export default {
   marquee: ["Rebarbagem automatizada", "Ferro fundido", "Aço", "Alumínio", "CNC 5 eixos", "Weijing × GrindTek", "Zero refugo", "Programação por pontos"],
   intro: {
     label: "Soluções", lines: ["Soluções CNC para a", "rebarbagem automatizada das", "suas peças fundidas."],
-    text: "A GrindTek disponibiliza máquinas CNC de 5 eixos especializadas na rebarbagem automatizada de peças fundidas em bruto.",
+    text: "A GrindTek Automation disponibiliza máquinas CNC de 5 eixos especializadas na rebarbagem automatizada de peças fundidas em bruto.",
     cta: "Pedir uma avaliação", apps: "Aplicações", list: ["Ferro fundido", "Aço", "Alumínio", "Outros materiais fundidos"],
   },
   machines: {

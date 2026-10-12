@@ -12,7 +12,7 @@ export const Footer = ({ onLegal }) => {
     <div className="mx-auto max-w-[1360px] px-5 md:px-10 pt-16 pb-8">
       <div className="grid md:grid-cols-12 gap-10">
         <div className="md:col-span-5">
-          <Logo />
+          <Logo className="h-11 md:h-14 w-auto" />
           <p className="mt-5 text-slate-600 max-w-sm leading-relaxed">{c.tagline}</p>
         </div>
         <div className="md:col-span-4">

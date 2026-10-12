@@ -15,7 +15,7 @@ export default {
   marquee: ["Automated deburring", "Cast iron", "Steel", "Aluminium", "5-axis CNC", "Weijing × GrindTek", "Zero scrap", "Point-based programming"],
   intro: {
     label: "Solutions", lines: ["CNC solutions for", "automated deburring of", "your castings."],
-    text: "GrindTek supplies 5-axis CNC machines specialised in the automated deburring and fettling of raw castings.",
+    text: "GrindTek Automation supplies 5-axis CNC machines specialised in the automated deburring and fettling of raw castings.",
     cta: "Request an assessment", apps: "Applications", list: ["Cast iron", "Steel", "Aluminium", "Other cast materials"],
   },
   machines: {

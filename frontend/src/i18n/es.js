@@ -15,7 +15,7 @@ export default {
   marquee: ["Desbarbado automatizado", "Hierro fundido", "Acero", "Aluminio", "CNC 5 ejes", "Weijing × GrindTek", "Cero rechazo", "Programación por puntos"],
   intro: {
     label: "Soluciones", lines: ["Soluciones CNC para el", "desbarbado automatizado de", "sus piezas de fundición."],
-    text: "GrindTek ofrece máquinas CNC de 5 ejes especializadas en el desbarbado automatizado de piezas fundidas en bruto.",
+    text: "GrindTek Automation ofrece máquinas CNC de 5 ejes especializadas en el desbarbado automatizado de piezas fundidas en bruto.",
     cta: "Solicitar una evaluación", apps: "Aplicaciones", list: ["Hierro fundido", "Acero", "Aluminio", "Otros materiales fundidos"],
   },
   machines: {

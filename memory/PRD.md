@@ -1,3 +1,5 @@
+<!-- 2026-10-12: Logo enlarged in Nav + Footer (h-11 mobile / h-14 desktop); Intro text now "GrindTek Automation ..." in FR/EN/ES/PT. Next: SEO setup for grindtek-automation.com -->
+
 # PRD — OW Auto Grinding (www.owgrinding.com)
 
 ## Original problem statement

@@ -30,7 +30,7 @@ export const Nav = () => {
     >
       <div className="mx-auto max-w-[1360px] px-5 md:px-10 h-[68px] flex items-center justify-between">
         <button data-testid="nav-logo" onClick={() => go("top")} aria-label={t.nav.home}>
-          <Logo />
+          <Logo className="h-11 md:h-14 w-auto" />
         </button>
         <nav className="hidden xl:flex items-center gap-7">
           {NAV.map((id) => (
