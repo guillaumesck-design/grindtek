@@ -10,7 +10,6 @@ import { Pillars } from "@/components/site/Pillars";
 import { About } from "@/components/site/About";
 import { Challenges } from "@/components/site/Challenges";
 import { Bento } from "@/components/site/Bento";
-import { Gallery } from "@/components/site/Gallery";
 import { Series } from "@/components/site/Series";
 import { Comparison } from "@/components/site/Comparison";
 import { Roi } from "@/components/site/Roi";
@@ -38,7 +37,6 @@ export default function Landing() {
         <About />
         <Challenges />
         <Bento />
-        <Gallery />
         <Series />
         <Comparison />
         <Roi />

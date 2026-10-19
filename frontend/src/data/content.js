@@ -36,4 +36,3 @@ export const DIFF_KEYS = ["prog", "setup", "fixture", "pre", "laser", "disc"];
 
 export const SERIES_KEYS = ["petite", "moyenne", "grande"];
 
-export const GALLERY = ["/img/c1.webp", "/img/c2.webp", "/img/c3.webp", "/img/c4.webp", "/img/c5.webp", "/img/c6.webp", "/img/c7.webp"];

@@ -46,7 +46,7 @@ export default {
     ],
   },
   about: {
-    label: "À propos", lines: ["À propos", "de GrindTek Automation"], fig: "Fig. 07 — Site partenaire", alt: "Bâtiment GrindTek Automation", distrib: "Distribution Europe", cta: "Demander un devis",
+    label: "À propos", lines: ["À propos", "de GrindTek Automation"], distrib: "Distribution Europe", cta: "Demander un devis",
     p1: "GrindTek Automation apporte des solutions CNC d'ébavurage automatisé, avec un objectif clair : augmenter la productivité des fonderies et réduire les coûts du poste de parachèvement.",
     p2: "Nous accompagnons la modernisation des process de production, en réduisant la dépendance à la main-d'œuvre manuelle et en renforçant la compétitivité des fonderies européennes.",
     p3a: "En partenariat avec", p3b: ", fabricant international de référence, nous mettons à disposition en Europe des machines CNC 5 axes développées spécifiquement pour les applications de fonderie.",
@@ -66,7 +66,6 @@ export default {
       { t: "Disques diamantés haute performance", d: "Conçus pour l'ébavurage : fort pouvoir d'enlèvement, durabilité exceptionnelle et meilleur rendement de production." },
     ],
   },
-  gallery: { label: "Sur le terrain", title: "Livraisons, installations, showroom.", hint: "Survolez pour mettre en pause", alt: "Photo terrain" },
   series: {
     label: "Flexibilité", lines: ["Une solution qui", "s'adapte à votre réalité."], intro: "Notre technologie répond aux besoins en :", cta: "Parler à un spécialiste", alt: "Machine CNC d'ébavurage",
     items: [

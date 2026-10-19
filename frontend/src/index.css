@@ -77,8 +77,6 @@ body {
 
 @keyframes marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
 .marquee-track { animation: marquee 70s linear infinite; width: max-content; }
-.gallery-track { animation: marquee 60s linear infinite; width: max-content; }
-.gallery-track:hover { animation-play-state: paused; }
 
 @keyframes pulse-ring { 0% { transform: scale(.6); opacity: .8; } 100% { transform: scale(2.4); opacity: 0; } }
 .pulse-ring { transform-origin: center; transform-box: fill-box; animation: pulse-ring 2.4s ease-out infinite; }
@@ -87,5 +85,5 @@ body {
 .radar-sweep { transform-origin: 260px 260px; transform-box: view-box; animation: spin360 9s linear infinite; }
 
 @media (prefers-reduced-motion: reduce) {
-    .marquee-track, .gallery-track, .pulse-ring, .radar-sweep { animation: none; }
+    .marquee-track, .pulse-ring, .radar-sweep { animation: none; }
 }

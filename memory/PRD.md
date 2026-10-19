@@ -1,3 +1,5 @@
+<!-- 2026-10-19: Removed About building photo (text-only 2-col layout) and entire Gallery (08) section + its images/i18n keys. Section numbering now jumps 07 -> 09. -->
+
 <!-- 2026-10-12: "05 — À propos" title, image alt and first paragraph now say "GrindTek Automation" (FR/EN/ES/PT). No "OW Auto Grinding" text remains in code. -->
 
 <!-- 2026-10-12: Logo enlarged in Nav + Footer (h-11 mobile / h-14 desktop); Intro text now "GrindTek Automation ..." in FR/EN/ES/PT. Next: SEO setup for grindtek-automation.com -->

@@ -46,7 +46,7 @@ export default {
     ],
   },
   about: {
-    label: "About", lines: ["About", "GrindTek Automation"], fig: "Fig. 07 — Partner site", alt: "GrindTek Automation building", distrib: "European distribution", cta: "Request a quote",
+    label: "About", lines: ["About", "GrindTek Automation"], distrib: "European distribution", cta: "Request a quote",
     p1: "GrindTek Automation delivers automated CNC deburring solutions with one clear goal: raising foundry productivity and lowering finishing costs.",
     p2: "We support the modernisation of production processes, reducing reliance on manual labour and strengthening the competitiveness of foundries.",
     p3a: "In partnership with", p3b: ", a leading international manufacturer, we supply 5-axis CNC machines developed specifically for foundry applications.",
@@ -66,7 +66,6 @@ export default {
       { t: "High-performance diamond discs", d: "Designed for deburring: high stock removal, exceptional durability and better production output." },
     ],
   },
-  gallery: { label: "In the field", title: "Deliveries, installations, showroom.", hint: "Hover to pause", alt: "Field photo" },
   series: {
     label: "Flexibility", lines: ["A solution that adapts", "to your reality."], intro: "Our technology covers:", cta: "Talk to a specialist", alt: "CNC deburring machine",
     items: [
