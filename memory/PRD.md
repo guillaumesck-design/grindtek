@@ -1,3 +1,5 @@
+<!-- 2026-10-21: Logo 56px mobile / 72px desktop (Nav+Footer), header 76/88px; Hero grid background removed; all monospace text (eyebrows, font-mono) switched to Archivo; JetBrains Mono removed. PENDING: user decision on adding GrindTek into overkkast.com/grindtek (separate Emergent job - needs Save to GitHub + port in Overkkast job, or subdomain/iframe). -->
+
 <!-- 2026-10-19: Removed About building photo (text-only 2-col layout) and entire Gallery (08) section + its images/i18n keys. Section numbering now jumps 07 -> 09. -->
 
 <!-- 2026-10-12: "05 — À propos" title, image alt and first paragraph now say "GrindTek Automation" (FR/EN/ES/PT). No "OW Auto Grinding" text remains in code. -->

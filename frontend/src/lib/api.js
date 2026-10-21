@@ -16,7 +16,7 @@ export function formatApiError(detail) {
 export function scrollToId(id) {
   const el = document.getElementById(id);
   if (!el) return;
-  if (window.__lenis) window.__lenis.scrollTo(el, { offset: -72, duration: 1.4 });
+  if (window.__lenis) window.__lenis.scrollTo(el, { offset: -90, duration: 1.4 });
   else el.scrollIntoView({ behavior: "smooth" });
 }
 

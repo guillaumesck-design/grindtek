@@ -55,8 +55,8 @@ body {
 
 @layer components {
     .font-display { font-family: "Archivo", sans-serif; font-variation-settings: "wdth" 118; letter-spacing: -0.035em; }
-    .font-mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
-    .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: #3b4a5c; }
+    .font-mono { font-variant-numeric: tabular-nums; }
+    .eyebrow { font-family: "Archivo", sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: #3b4a5c; }
     .blueprint { background-image: linear-gradient(to right, rgba(43,76,111,.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(43,76,111,.07) 1px, transparent 1px); background-size: 56px 56px; }
     .blueprint-dark { background-image: linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 56px 56px; }
     .clip-corner { clip-path: polygon(0 0, calc(100% - 36px) 0, 100% 36px, 100% 100%, 36px 100%, 0 calc(100% - 36px)); }

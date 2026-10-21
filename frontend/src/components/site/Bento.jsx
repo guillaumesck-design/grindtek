@@ -21,7 +21,7 @@ const PointPath = () => (
     {PTS.map(([x, y], i) => (
       <g key={i}>
         <circle cx={x} cy={y} r="6" fill="#c5b358" />
-        <text x={x + 9} y={y - 8} fontSize="10" fontFamily="JetBrains Mono" fill="#3b4a5c">{`P${i + 1}`}</text>
+        <text x={x + 9} y={y - 8} fontSize="10" fontFamily="Archivo" fill="#3b4a5c">{`P${i + 1}`}</text>
       </g>
     ))}
   </svg>

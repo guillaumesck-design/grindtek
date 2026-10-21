@@ -34,7 +34,7 @@ export const Hero = () => {
   };
 
   return (
-    <section ref={ref} id="top" data-testid="hero-section" className="relative overflow-hidden blueprint pt-28 md:pt-36 pb-16 md:pb-24">
+    <section ref={ref} id="top" data-testid="hero-section" className="relative overflow-hidden pt-32 md:pt-40 pb-16 md:pb-24">
       <div className="mx-auto max-w-[1360px] px-5 md:px-10">
         <motion.div
           initial={{ opacity: 0, y: -8 }}
