@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 import { Logo } from "./Logo";
 import { NAV, BRAND } from "@/data/content";
 import { scrollToId } from "@/lib/api";
@@ -29,11 +30,14 @@ export const Footer = ({ onLegal }) => {
           <a href={BRAND.phoneHref} className="block font-mono hover:text-steel">{BRAND.phone}</a>
           <a href={`mailto:${BRAND.email}`} className="block hover:text-steel">{BRAND.email}</a>
           <p>{BRAND.domain}</p>
+          <a href="https://www.overkkast.com" target="_blank" rel="noopener noreferrer" data-testid="footer-overkkast-link" className="group inline-flex items-center gap-1 font-semibold text-steel hover:text-ink transition-colors">
+            www.overkkast.com <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
         </div>
       </div>
       <div className="font-display font-extrabold text-[17vw] md:text-[12vw] leading-[0.8] text-outline mt-14 select-none" aria-hidden="true">GRINDTEK</div>
       <div className="mt-8 pt-6 border-t border-line flex flex-wrap items-center justify-between gap-4 text-xs text-slate-600">
-        <span>© {new Date().getFullYear()} GrindTek — {BRAND.company}. {c.rights}</span>
+        <span>© {new Date().getFullYear()} GrindTek — <a href="https://www.overkkast.com" target="_blank" rel="noopener noreferrer" data-testid="footer-copyright-overkkast-link" className="hover:text-ink underline-offset-4 hover:underline">{BRAND.company}</a>. {c.rights}</span>
         <div className="flex flex-wrap gap-5">
           <button data-testid="footer-legal-btn" onClick={() => onLegal("legal")} className="hover:text-ink underline-offset-4 hover:underline">{c.legal}</button>
           <button data-testid="footer-privacy-btn" onClick={() => onLegal("privacy")} className="hover:text-ink underline-offset-4 hover:underline">{c.privacy}</button>
