@@ -1,0 +1,22 @@
+# GrindTek Automation
+
+> GrindTek Automation (an Overkkast brand) supplies 5-axis CNC machines specialised in the automated deburring and fettling of raw castings in cast iron, steel, aluminium and other alloys. It distributes Weijing CNC deburring machines in Europe. The site is available in French (default), English, Spanish and Portuguese.
+
+## Who it is for
+
+Foundries and casting finishing shops that want to replace manual deburring, standardise finishing quality and reduce reliance on manual labour, as an alternative to traditional robotic cells.
+
+## Key sections of https://www.grindtek-automation.com/
+
+- Machines: the GV range (GV 120, GV 130, GV 230, GV 270, GV 2100) with technical sheets and downloadable PDF spec sheets
+- Results: a reference case on productivity and finishing scrap
+- Comparison: dedicated CNC vs robotic cell vs manual deburring
+- ROI calculator: interactive estimate based on the visitor's own figures
+- Process: the 5-step path from technical evaluation to production
+- FAQ: materials, programming, part sizes, manufacturer, how to get a quote
+- Quote request: form to request a quote and a technical evaluation
+
+## Company
+
+- Parent company: OVERKKAST SAS, https://www.overkkast.com/
+- Manufacturer partner: Weijing

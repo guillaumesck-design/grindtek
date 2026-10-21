@@ -6,6 +6,7 @@ export const BRAND = {
   phone: "01 84 80 86 99",
   phoneHref: "tel:+33184808699",
   email: "contact@overkkast.com",
+  overkkastUrl: "https://www.overkkast.com",
 };
 
 export const NAV = ["machines", "resultats", "comparatif", "roi", "processus", "faq"];

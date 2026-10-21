@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Logo } from "./Logo";
-import { NAV } from "@/data/content";
+import { NAV, BRAND } from "@/data/content";
 import { scrollToId } from "@/lib/api";
 import { useLang } from "@/i18n";
 import { LangSwitcher } from "./LangSwitcher";
@@ -32,7 +32,7 @@ export const Nav = () => {
         <button data-testid="nav-logo" onClick={() => go("top")} aria-label={t.nav.home}>
           <Logo className="h-14 md:h-[72px] w-auto" />
         </button>
-        <nav className="hidden xl:flex items-center gap-6 2xl:gap-8">
+        <nav className="hidden xl:flex items-center gap-5 2xl:gap-8">
           {NAV.map((id) => (
             <button
               key={id}
@@ -44,6 +44,16 @@ export const Nav = () => {
               <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-gold transition-transform duration-300 group-hover:scale-x-100" />
             </button>
           ))}
+          <a
+            href={BRAND.overkkastUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="nav-overkkast-link"
+            className="group inline-flex items-center gap-1 text-[15px] 2xl:text-base font-semibold text-[#75661f] hover:text-ink transition-colors"
+          >
+            Overkkast
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
         </nav>
         <div className="flex items-center gap-2">
           <LangSwitcher className="hidden md:inline-flex" />
@@ -87,6 +97,16 @@ export const Nav = () => {
                   <span className="font-mono text-xs text-slate-500">0{i + 1}</span>
                 </button>
               ))}
+              <a
+                href={BRAND.overkkastUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="nav-mobile-overkkast-link"
+                className="flex items-center justify-between py-3 text-left font-display text-xl font-semibold text-[#75661f]"
+              >
+                Overkkast
+                <ArrowUpRight className="w-5 h-5" />
+              </a>
             </div>
           </motion.nav>
         )}
