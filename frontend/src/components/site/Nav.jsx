@@ -32,13 +32,13 @@ export const Nav = () => {
         <button data-testid="nav-logo" onClick={() => go("top")} aria-label={t.nav.home}>
           <Logo className="h-14 md:h-[72px] w-auto" />
         </button>
-        <nav className="hidden xl:flex items-center gap-7">
+        <nav className="hidden xl:flex items-center gap-6 2xl:gap-8">
           {NAV.map((id) => (
             <button
               key={id}
               data-testid={`nav-link-${id}`}
               onClick={() => go(id)}
-              className="group relative text-[13px] font-medium text-slate-700 hover:text-ink transition-colors"
+              className="group relative text-[15px] 2xl:text-base font-semibold text-slate-700 hover:text-ink transition-colors"
             >
               {t.nav[id]}
               <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-gold transition-transform duration-300 group-hover:scale-x-100" />
