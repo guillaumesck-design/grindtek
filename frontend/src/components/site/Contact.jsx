@@ -13,7 +13,7 @@ export const Contact = ({ onLegal }) => {
     <div className="absolute inset-0 blueprint-dark" />
     <div className="relative mx-auto max-w-[1360px] px-5 md:px-10 grid lg:grid-cols-12 gap-10 lg:gap-14">
       <div className="lg:col-span-5">
-        <span className="eyebrow !text-slate-300"><span className="text-gold">14</span> — {c.label}</span>
+        <span className="eyebrow !text-slate-300"><span className="text-gold">13</span> — {c.label}</span>
         <MaskLines className="mt-5 font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[0.98]" lines={[...c.lines, <span className="text-gold">{c.accent}</span>]} />
         <FadeUp delay={0.15} className="mt-6 text-slate-300 text-lg max-w-md">
           {c.text}

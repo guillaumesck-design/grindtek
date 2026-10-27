@@ -15,7 +15,7 @@ export const Series = () => {
     <section id="series" data-testid="series-section" className="py-20 md:py-32">
       <div className="mx-auto max-w-[1360px] px-5 md:px-10 grid lg:grid-cols-12 gap-10 items-center">
         <div className="lg:col-span-6">
-          <span className="eyebrow"><span className="text-gold">09</span> — {c.label}</span>
+          <span className="eyebrow"><span className="text-gold">05</span> — {c.label}</span>
           <MaskLines className="mt-5 font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-[1.02] text-ink" lines={c.lines} />
           <FadeUp delay={0.1} className="mt-8">
             <div className="text-slate-600 mb-4">{c.intro}</div>

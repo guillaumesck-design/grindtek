@@ -55,7 +55,7 @@ export const Roi = () => {
   return (
     <section id="roi" data-testid="roi-section" className="py-20 md:py-32">
       <div className="mx-auto max-w-[1360px] px-5 md:px-10">
-        <SectionHead index="11" label={c.label} lines={c.lines}>
+        <SectionHead index="07" label={c.label} lines={c.lines}>
           {c.text}
         </SectionHead>
         <FadeUp className="grid lg:grid-cols-12 gap-5">

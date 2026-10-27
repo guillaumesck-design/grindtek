@@ -9,7 +9,7 @@ export const Challenges = () => {
   return (
   <section id="defis" data-testid="challenges-section" className="py-20 md:py-32 bg-white border-y border-line">
     <div className="mx-auto max-w-[1360px] px-5 md:px-10">
-      <SectionHead index="06" label={c.label} lines={c.lines} />
+      <SectionHead index="10" label={c.label} lines={c.lines} />
       <div className="border-t border-line">
         {c.items.map((x, i) => (
           <FadeUp key={i} delay={i * 0.05} y={16}>

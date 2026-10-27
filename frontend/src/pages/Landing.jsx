@@ -34,13 +34,13 @@ export default function Landing() {
         <Featured />
         <Results />
         <Pillars />
-        <About />
-        <Challenges />
-        <Bento />
         <Series />
         <Comparison />
         <Roi />
         <Process />
+        <About />
+        <Challenges />
+        <Bento />
         <Faq />
         <Contact onLegal={setLegal} />
       </main>

@@ -1,3 +1,5 @@
+<!-- 2026-10-27: Section order now Intro01, Machines02, Featured, Results03, Pillars04, Series05, Comparison06, ROI07, Process08, About09, Challenges10, Bento11, FAQ12, Contact13 (renumbered, no gaps). -->
+
 <!-- 2026-10-21: Overkkast link in desktop nav + mobile menu (gold #75661f) and gold pill button in footer; BRAND.overkkastUrl in content.js. SEO: index.html title/description/canonical/OG/Twitter/JSON-LD (Organization, WebSite, FAQPage w/o metrics Q), noscript fallback, apple-touch-icon, og-image.jpg 1200x630, robots.txt, sitemap.xml, llms.txt. Canonical = https://www.grindtek-automation.com/ (change if hosted at overkkast.com/grindtek). Phone/address/email intentionally NOT in JSON-LD pending confirmation. -->
 
 <!-- 2026-10-21: Logo 56px mobile / 72px desktop (Nav+Footer), header 76/88px; Hero grid background removed; all monospace text (eyebrows, font-mono) switched to Archivo; JetBrains Mono removed. PENDING: user decision on adding GrindTek into overkkast.com/grindtek (separate Emergent job - needs Save to GitHub + port in Overkkast job, or subdomain/iframe). -->

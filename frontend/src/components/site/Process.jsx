@@ -12,7 +12,7 @@ export const Process = () => {
   return (
     <section id="processus" data-testid="process-section" className="py-20 md:py-32 bg-white border-y border-line">
       <div className="mx-auto max-w-[1360px] px-5 md:px-10">
-        <SectionHead index="12" label={c.label} lines={c.lines} />
+        <SectionHead index="08" label={c.label} lines={c.lines} />
         <div ref={ref} className="relative">
           <div className="hidden lg:block absolute top-[22px] left-0 right-0 h-px bg-line" />
           <motion.div style={{ scaleX: scale }} className="hidden lg:block absolute top-[22px] left-0 right-0 h-[2px] bg-steel origin-left" />

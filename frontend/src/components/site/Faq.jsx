@@ -7,7 +7,7 @@ export const Faq = () => {
   return (
   <section id="faq" data-testid="faq-section" className="py-20 md:py-32 bg-white border-y border-line">
     <div className="mx-auto max-w-[1360px] px-5 md:px-10">
-      <SectionHead index="13" label={t.faq.label} lines={[t.faq.title]} />
+      <SectionHead index="12" label={t.faq.label} lines={[t.faq.title]} />
       <FadeUp className="lg:ml-[25%]">
         <Accordion type="single" collapsible defaultValue="item-0" className="border-t border-line">
           {t.faq.items.map((f, i) => (

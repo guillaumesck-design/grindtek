@@ -67,7 +67,7 @@ export const Bento = () => {
   return (
   <section id="atouts" data-testid="bento-section" className="py-20 md:py-32">
     <div className="mx-auto max-w-[1360px] px-5 md:px-10">
-      <SectionHead index="07" label={c.label} lines={c.lines} />
+      <SectionHead index="11" label={c.label} lines={c.lines} />
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {DIFF_KEYS.map((k, i) => <Card key={k} d={{ k, ...c.items[i] }} i={i} alt={c.discAlt} />)}
       </div>

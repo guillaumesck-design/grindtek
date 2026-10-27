@@ -10,7 +10,7 @@ export const About = () => {
     <section id="a-propos" data-testid="about-section" className="py-20 md:py-32">
       <div className="mx-auto max-w-[1360px] px-5 md:px-10 grid lg:grid-cols-12 gap-10 lg:gap-14">
         <div className="lg:col-span-4">
-          <span className="eyebrow"><span className="text-gold">05</span> — {c.label}</span>
+          <span className="eyebrow"><span className="text-gold">09</span> — {c.label}</span>
           <MaskLines className="mt-5 font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-[1.02] text-ink" lines={c.lines} />
         </div>
         <div className="lg:col-span-8 lg:pt-10">

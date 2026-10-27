@@ -8,7 +8,7 @@ export const Comparison = () => {
   return (
   <section id="comparatif" data-testid="comparison-section" className="py-20 md:py-32 bg-white border-y border-line">
     <div className="mx-auto max-w-[1360px] px-5 md:px-10">
-      <SectionHead index="10" label={COMPARE.label} lines={COMPARE.lines}>
+      <SectionHead index="06" label={COMPARE.label} lines={COMPARE.lines}>
         {COMPARE.text}
       </SectionHead>
       <FadeUp>
