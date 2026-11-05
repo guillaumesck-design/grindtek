@@ -1,0 +1,34 @@
+{
+  "summary": "Tested the 'Rappel' feature (floating + footer buttons, dialog, form validation, i18n, admin panel) end-to-end. 9/9 backend pytest cases pass. All frontend flows pass. Found and fixed one critical serialization bug: list/patch endpoints returned '_id' instead of 'id' because FastAPI defaults response_model_by_alias=True — this would have broken admin delete (frontend uses c.id). Fix: added response_model_by_alias=False to GET /api/quotes, PATCH /api/quotes/{id}, GET /api/callbacks. After fix, admin UI delete verified working against the live preview.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_callbacks.py",
+    "/app/test_reports/pytest/callbacks_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "FIXED: FastAPI defaults response_model_by_alias=True, so routes using BaseDocument (with alias='_id' on the id field) were leaking Mongo's _id instead of serializing to 'id'. Would have silently broken admin delete (frontend reads c.id) and any downstream consumer. Applied response_model_by_alias=False on /api/quotes (GET, PATCH) and /api/callbacks (GET). Consider adding a model_serializer or switching alias strategy (e.g., serialization_alias) globally so future endpoints inherit the correct behavior.",
+    "notify_new_callback is scheduled via BackgroundTasks on every valid submission — this sends a real email to contact@overkkast.com. OK for production but keep tests at ≤5 valid submissions/hour per IP (rate limit) and prefix TEST_.",
+    "Rate-limit key is only client IP (x-forwarded-for first hop). Behind shared NAT or office proxies, legitimate users may hit 429. Minor.",
+    "server.py mixes auth, geo, quotes, callbacks (~350 lines). Still under the 700-line threshold but approaching a point where splitting into routers/{auth,quotes,callbacks,geo}.py would help maintainability."
+  ],
+  "updated_files": [
+    "/app/backend/server.py",
+    "/app/backend/tests/test_callbacks.py"
+  ],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "test_credentials": "admin@grindtek-automation.com / OWgrind!2026",
+  "seed_data_creation": "One TEST_ callback was created by backend tests (auto-deleted by fixture) and one by UI test (TEST_Alice/TEST_Doe, deleted via admin panel at end of test). Pre-existing stale 'TEST_Jean TEST_Dupont' record was also purged by the cleanup fixture. DB is clean.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Rate limit is 5 callbacks/IP/hour; honeypot and 422 (bad body) submissions do NOT count. Cleanup fixture in test_callbacks.py purges any record with first_name or last_name starting with 'TEST_'. Admin login uses httpOnly cookies — requests.Session() handles cookies automatically. For UI tests use data-testid attributes; the login submit button is 'Se connecter' (no type='submit' selector needed, use role).",
+  "rca of the issue": "FastAPI's response_model_by_alias parameter defaults to True on route decorators. The BaseDocument model declared `id: Optional[...] = Field(alias='_id')` so Pydantic serialized with alias → '_id' in JSON. GET /api/callbacks response therefore contained '_id' instead of 'id'. Frontend Admin.jsx renders `data-testid={`admin-callback-delete-${c.id}`}` and calls `remove(c.id)`; with undefined c.id, delete URL would be /api/callbacks/undefined (404). Reproduction: curl GET /api/callbacks with admin cookie → observed '_id' key. Mitigation applied: response_model_by_alias=False on list/patch routes so Pydantic dumps by field name."
+}

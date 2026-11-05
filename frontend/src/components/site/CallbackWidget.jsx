@@ -34,7 +34,7 @@ export const CallbackWidget = ({ onLegal }) => {
         {c.btn}
       </button>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent data-testid="callback-dialog" data-lenis-prevent className="max-w-md rounded-none border-line p-7 sm:p-8">
+        <DialogContent data-testid="callback-dialog" data-lenis-prevent className="w-[calc(100%-2rem)] max-w-md rounded-none border-line p-7 sm:p-8">
           <DialogTitle className="font-display font-bold text-2xl text-ink">{c.title}</DialogTitle>
           <DialogDescription className="text-slate-600">{c.text}</DialogDescription>
           <CallbackForm c={c} onLegal={showLegal} onDone={() => setOpen(false)} />

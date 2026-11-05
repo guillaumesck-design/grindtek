@@ -214,13 +214,13 @@ async def create_quote(body: QuoteIn, request: Request, background: BackgroundTa
     return {"id": str(res.inserted_id), "ok": True}
 
 
-@api.get("/quotes", response_model=List[Quote])
+@api.get("/quotes", response_model=List[Quote], response_model_by_alias=False)
 async def list_quotes(_=Depends(current_admin)):
     docs = await db.quotes.find().sort("created_at", -1).to_list(2000)
     return [Quote.from_mongo(d) for d in docs]
 
 
-@api.patch("/quotes/{qid}", response_model=Quote)
+@api.patch("/quotes/{qid}", response_model=Quote, response_model_by_alias=False)
 async def update_quote(qid: str, body: StatusUpdate, _=Depends(current_admin)):
     if not ObjectId.is_valid(qid):
         raise HTTPException(404, "Introuvable")
@@ -256,7 +256,7 @@ async def create_callback(body: CallbackIn, request: Request, background: Backgr
     return {"id": str(res.inserted_id), "ok": True}
 
 
-@api.get("/callbacks", response_model=List[Callback])
+@api.get("/callbacks", response_model=List[Callback], response_model_by_alias=False)
 async def list_callbacks(_=Depends(current_admin)):
     docs = await db.callbacks.find().sort("created_at", -1).to_list(2000)
     return [Callback.from_mongo(d) for d in docs]
