@@ -17,7 +17,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel, BeforeValidator, ConfigDict, EmailStr, Field
 from starlette.middleware.cors import CORSMiddleware
 
-from email_service import notify_new_quote, send_quote_ack
+from email_service import notify_new_quote, send_quote_ack, notify_new_callback
 import httpx
 import ipaddress
 
@@ -70,6 +70,22 @@ class Quote(BaseDocument):
     machine: Optional[str] = None
     message: Optional[str] = None
     status: Status = "nouveau"
+    lang: str = "fr"
+    created_at: str
+
+
+class CallbackIn(BaseModel):
+    first_name: str = Field(min_length=1, max_length=80)
+    last_name: str = Field(min_length=1, max_length=80)
+    phone: str = Field(min_length=6, max_length=40, pattern=r"^[0-9+().\-\s]+$")
+    lang: Literal["fr", "pt", "es", "en"] = "fr"
+    website: Optional[str] = None
+
+
+class Callback(BaseDocument):
+    first_name: str
+    last_name: str
+    phone: str
     lang: str = "fr"
     created_at: str
 
@@ -224,6 +240,38 @@ async def delete_quote(qid: str, _=Depends(current_admin)):
     return {"ok": True}
 
 
+@api.post("/callbacks", status_code=201)
+async def create_callback(body: CallbackIn, request: Request, background: BackgroundTasks):
+    if body.website:
+        return {"id": None, "ok": True}
+    now = datetime.now(timezone.utc)
+    ip = client_ip(request)
+    if await db.callback_rate.count_documents({"ip": ip, "at": {"$gte": now - timedelta(hours=1)}}) >= 5:
+        raise HTTPException(429, "Trop de demandes. Réessayez plus tard.")
+    await db.callback_rate.insert_one({"ip": ip, "at": now})
+    data = {k: v.strip() for k, v in body.model_dump(exclude={"website"}).items()}
+    cb = Callback(**data, created_at=now.isoformat())
+    res = await db.callbacks.insert_one(cb.to_mongo())
+    background.add_task(notify_new_callback, cb.model_dump(exclude={"id"}))
+    return {"id": str(res.inserted_id), "ok": True}
+
+
+@api.get("/callbacks", response_model=List[Callback])
+async def list_callbacks(_=Depends(current_admin)):
+    docs = await db.callbacks.find().sort("created_at", -1).to_list(2000)
+    return [Callback.from_mongo(d) for d in docs]
+
+
+@api.delete("/callbacks/{cid}")
+async def delete_callback(cid: str, _=Depends(current_admin)):
+    if not ObjectId.is_valid(cid):
+        raise HTTPException(404, "Introuvable")
+    res = await db.callbacks.delete_one({"_id": ObjectId(cid)})
+    if not res.deleted_count:
+        raise HTTPException(404, "Introuvable")
+    return {"ok": True}
+
+
 @api.post("/auth/login")
 async def login(body: LoginIn, request: Request, response: Response):
     email = body.email.lower()
@@ -281,6 +329,7 @@ async def startup():
     await db.users.create_index("email", unique=True)
     await db.login_attempts.create_index("identifier")
     await db.quote_rate.create_index("at", expireAfterSeconds=7200)
+    await db.callback_rate.create_index("at", expireAfterSeconds=7200)
     email = os.environ["ADMIN_EMAIL"].lower()
     pwd = os.environ["ADMIN_PASSWORD"]
     existing = await db.users.find_one({"email": email})

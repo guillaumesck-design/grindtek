@@ -138,6 +138,8 @@ export default {
     successTitle: "Merci, votre demande est bien reçue.", successText: "Un e-mail de confirmation vous a été envoyé. Nous vous recontactons pour donner suite à votre demande.", again: "Envoyer une autre demande",
     materials: { fonte: "Fonte", acier: "Acier", aluminium: "Aluminium", autre: "Autre" },
   },
+  callback: { btn: "Être rappelé", title: "Être rappelé", text: "Laissez vos coordonnées, notre équipe vous rappelle rapidement.", first: "Prénom", last: "Nom", phone: "Téléphone", submit: "Me faire rappeler", note: "Vos coordonnées servent uniquement à vous rappeler. Voir la", noteLink: "politique de confidentialité", ok: "Merci ! Nous vous rappelons très bientôt.", close: "Fermer", errPhone: "Saisissez un numéro de téléphone valide." },
+
   footer: { tagline: "Machines CNC 5 axes d'ébavurage automatisé pour pièces de fonderie. Distribution Weijing en Europe.", nav: "Navigation", contact: "Contact", rights: "Tous droits réservés.", legal: "Mentions légales", privacy: "Politique de confidentialité", admin: "Accès admin" },
   legal: {
     legalTitle: "Mentions légales", privacyTitle: "Politique de confidentialité",

@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Phone } from "lucide-react";
 import { Logo } from "./Logo";
 import { NAV, BRAND } from "@/data/content";
 import { scrollToId } from "@/lib/api";
 import { useLang } from "@/i18n";
+import { openCallback } from "./CallbackWidget";
 
 export const Footer = ({ onLegal }) => {
   const { t } = useLang();
@@ -33,6 +34,9 @@ export const Footer = ({ onLegal }) => {
           <a href={BRAND.overkkastUrl} target="_blank" rel="noopener noreferrer" data-testid="footer-overkkast-link" className="group !mt-4 inline-flex items-center gap-2 bg-gold text-ink font-semibold px-5 py-2.5 rounded-full hover:bg-gold-light transition-colors">
             www.overkkast.com <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45" />
           </a>
+          <button data-testid="footer-callback-btn" onClick={openCallback} className="!mt-3 flex w-fit items-center gap-2 bg-ink text-white font-semibold px-5 py-2.5 rounded-full hover:bg-steel transition-colors">
+            <Phone className="w-4 h-4" /> {t.callback.btn}
+          </button>
         </div>
       </div>
       <div className="font-display font-extrabold text-[17vw] md:text-[12vw] leading-[0.8] text-outline mt-14 select-none" aria-hidden="true">GRINDTEK</div>

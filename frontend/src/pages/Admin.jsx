@@ -54,6 +54,47 @@ const toCsv = (rows) => {
     .map((r) => r.map(esc).join(";")).join("\n");
 };
 
+const CallbacksPanel = () => {
+  const [rows, setRows] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    api.get("/callbacks")
+      .then(({ data }) => setRows(Array.isArray(data) ? data : []))
+      .catch((e) => toast.error(formatApiError(e?.response?.data?.detail)))
+      .finally(() => setLoading(false));
+  }, []);
+  const remove = async (id) => {
+    if (!window.confirm("Supprimer cette demande de rappel ?")) return;
+    await api.delete(`/callbacks/${id}`);
+    setRows((r) => r.filter((x) => x.id !== id));
+  };
+  return (
+    <section className="mt-14" data-testid="admin-callbacks">
+      <h2 className="font-display font-bold text-2xl mb-4">Demandes de rappel <span className="text-steel" data-testid="admin-callback-count">({rows.length})</span></h2>
+      <div className="bg-white border border-line overflow-x-auto">
+        <table className="w-full min-w-[560px] text-sm" data-testid="admin-callbacks-table">
+          <thead className="bg-paper text-left font-mono text-[11px] uppercase tracking-[0.12em] text-slate-600">
+            <tr>{["Date", "Prénom", "Nom", "Téléphone", ""].map((h) => <th key={h} className="px-4 py-3 font-normal">{h}</th>)}</tr>
+          </thead>
+          <tbody>
+            {loading && <tr><td colSpan={5} className="px-4 py-10 text-center text-slate-600"><Loader2 className="w-5 h-5 animate-spin inline" /></td></tr>}
+            {!loading && rows.length === 0 && <tr><td colSpan={5} className="px-4 py-10 text-center text-slate-600" data-testid="admin-callbacks-empty">Aucune demande de rappel pour le moment.</td></tr>}
+            {!loading && rows.map((c) => (
+              <tr key={c.id} className="border-t border-line" data-testid={`admin-callback-row-${c.id}`}>
+                <td className="px-4 py-4 font-mono text-xs whitespace-nowrap">{new Date(c.created_at).toLocaleString("fr-FR")}<span className="ml-2 text-slate-500 uppercase">{c.lang || "fr"}</span></td>
+                <td className="px-4 py-4 font-semibold text-ink">{c.first_name}</td>
+                <td className="px-4 py-4 font-semibold text-ink">{c.last_name}</td>
+                <td className="px-4 py-4"><a href={`tel:${c.phone}`} className="text-steel font-semibold">{c.phone}</a></td>
+                <td className="px-4 py-4 text-right"><button data-testid={`admin-callback-delete-${c.id}`} onClick={() => remove(c.id)} className="p-2 text-slate-500 hover:text-[#bf0000]" aria-label="Supprimer"><Trash2 className="w-4 h-4" /></button></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+};
+
 const Dashboard = ({ user, onLogout }) => {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -85,7 +126,7 @@ const Dashboard = ({ user, onLogout }) => {
     const blob = new Blob(["\ufeff" + toCsv(shown)], { type: "text/csv;charset=utf-8" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "demandes-devis-ow.csv";
+    a.download = "demandes-devis-grindtek.csv";
     a.click();
   };
   return (
@@ -145,6 +186,7 @@ const Dashboard = ({ user, onLogout }) => {
             </tbody>
           </table>
         </div>
+        <CallbacksPanel />
       </main>
     </div>
   );

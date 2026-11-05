@@ -18,6 +18,7 @@ import { Faq } from "@/components/site/Faq";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { LegalDialog } from "@/components/site/Legal";
+import { CallbackWidget } from "@/components/site/CallbackWidget";
 import { LangProvider } from "@/i18n";
 
 export default function Landing() {
@@ -46,6 +47,7 @@ export default function Landing() {
       </main>
       <Footer onLegal={setLegal} />
       <LegalDialog open={legal} onClose={() => setLegal(null)} />
+      <CallbackWidget onLegal={setLegal} />
     </div>
     </LangProvider>
   );

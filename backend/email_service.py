@@ -225,3 +225,43 @@ async def notify_new_quote(q: dict) -> None:
         logger.info(f"Quote alert sent: {eid}")
     except Exception as e:
         logger.error(f"Quote alert not sent: {e}")
+
+
+
+def callback_alert_html(c: dict) -> str:
+    phone = escape(c["phone"])
+    tel = re.sub(r"[^0-9+]", "", c["phone"])
+    admin_url = f'{os.environ["SITE_URL"].rstrip("/")}/admin'
+    rows = "".join([
+        _row("Prénom", escape(c["first_name"])),
+        _row("Nom", escape(c["last_name"])),
+        _row("Téléphone", f'<a href="tel:{escape(tel)}" style="color:#2b4c6f">{phone}</a>'),
+        _row("Langue du site", escape(str(c.get("lang") or "fr").upper())),
+    ])
+    return (
+        '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f6f8;padding:24px 0">'
+        '<tr><td align="center"><table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;font-family:Arial,sans-serif">'
+        '<tr><td style="background:#0d1420;padding:20px 28px;color:#ffffff;font-size:18px;font-weight:bold">'
+        'GRINDTEK <span style="color:#c5b358;font-size:11px;font-weight:normal">by OVERKKAST</span>'
+        '<div style="font-size:11px;letter-spacing:2px;color:#cbd5e1;font-weight:normal;margin-top:4px">DEMANDE DE RAPPEL</div></td></tr>'
+        '<tr><td style="padding:28px">'
+        '<p style="margin:0 0 16px;color:#0d1420;font-size:15px">Une personne souhaite être rappelée depuis le site.</p>'
+        f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #dce2e9">{rows}</table>'
+        f'<p style="margin:24px 0 0"><a href="tel:{escape(tel)}" style="display:inline-block;background:#c5b358;color:#0d1420;'
+        f'padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:bold;font-size:14px">Appeler {phone}</a>'
+        f' <a href="{escape(admin_url)}" style="display:inline-block;margin-left:8px;color:#2b4c6f;font-size:14px">Ouvrir l\'espace admin</a></p>'
+        '</td></tr>'
+        '<tr><td style="padding:16px 28px;border-top:1px solid #dce2e9;font-size:11px;color:#64748b">'
+        'Notification automatique envoyée par GrindTek.</td></tr>'
+        '</table></td></tr></table>'
+    )
+
+
+async def notify_new_callback(c: dict) -> None:
+    recipients = [r.strip() for r in os.environ["QUOTE_ALERT_EMAILS"].split(",") if r.strip()]
+    subject = f"Demande de rappel — {c['first_name']} {c['last_name']}"
+    try:
+        eid = await send_email(to=recipients, subject=subject, html=callback_alert_html(c))
+        logger.info(f"Callback alert sent: {eid}")
+    except Exception as e:
+        logger.error(f"Callback alert not sent: {e}")

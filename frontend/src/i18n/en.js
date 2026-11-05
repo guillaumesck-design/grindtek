@@ -138,6 +138,8 @@ export default {
     successTitle: "Thank you, your request has been received.", successText: "A confirmation email has been sent to you. We will get back to you to follow up on your request.", again: "Send another request",
     materials: { fonte: "Cast iron", acier: "Steel", aluminium: "Aluminium", autre: "Other" },
   },
+  callback: { btn: "Request a call", title: "Request a call back", text: "Leave your details and our team will call you back shortly.", first: "First name", last: "Last name", phone: "Phone", submit: "Call me back", note: "Your details are only used to call you back. See the", noteLink: "privacy policy", ok: "Thank you! We will call you back very soon.", close: "Close", errPhone: "Enter a valid phone number." },
+
   footer: { tagline: "5-axis CNC machines for automated deburring of castings. Weijing distribution in Europe.", nav: "Navigation", contact: "Contact", rights: "All rights reserved.", legal: "Legal notice", privacy: "Privacy policy", admin: "Admin access" },
   legal: {
     legalTitle: "Legal notice", privacyTitle: "Privacy policy",

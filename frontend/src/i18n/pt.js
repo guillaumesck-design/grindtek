@@ -138,6 +138,8 @@ export default {
     successTitle: "Obrigado, o seu pedido foi recebido.", successText: "Foi-lhe enviado um e-mail de confirmação. Entraremos em contacto para dar seguimento ao seu pedido.", again: "Enviar outro pedido",
     materials: { fonte: "Ferro fundido", acier: "Aço", aluminium: "Alumínio", autre: "Outro" },
   },
+  callback: { btn: "Ligamos-lhe", title: "Pedir uma chamada", text: "Deixe os seus dados e a nossa equipa liga-lhe em breve.", first: "Nome", last: "Apelido", phone: "Telefone", submit: "Liguem-me", note: "Os seus dados servem apenas para lhe ligarmos. Consulte a", noteLink: "política de privacidade", ok: "Obrigado! Ligamos-lhe muito em breve.", close: "Fechar", errPhone: "Introduza um número de telefone válido." },
+
   footer: { tagline: "Máquinas CNC de 5 eixos para rebarbagem automatizada de peças fundidas. Distribuição Weijing na Europa.", nav: "Navegação", contact: "Contacto", rights: "Todos os direitos reservados.", legal: "Aviso legal", privacy: "Política de privacidade", admin: "Acesso admin" },
   legal: {
     legalTitle: "Aviso legal", privacyTitle: "Política de privacidade",

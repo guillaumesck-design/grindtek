@@ -138,6 +138,8 @@ export default {
     successTitle: "Gracias, hemos recibido su solicitud.", successText: "Le hemos enviado un e-mail de confirmación. Nos pondremos en contacto para dar continuidad a su solicitud.", again: "Enviar otra solicitud",
     materials: { fonte: "Hierro fundido", acier: "Acero", aluminium: "Aluminio", autre: "Otro" },
   },
+  callback: { btn: "Que me llamen", title: "Solicitar una llamada", text: "Deje sus datos y nuestro equipo le llamará en breve.", first: "Nombre", last: "Apellido", phone: "Teléfono", submit: "Llámenme", note: "Sus datos solo se usan para llamarle. Consulte la", noteLink: "política de privacidad", ok: "¡Gracias! Le llamaremos muy pronto.", close: "Cerrar", errPhone: "Introduzca un número de teléfono válido." },
+
   footer: { tagline: "Máquinas CNC de 5 ejes para el desbarbado automatizado de piezas de fundición. Distribución Weijing en Europa.", nav: "Navegación", contact: "Contacto", rights: "Todos los derechos reservados.", legal: "Aviso legal", privacy: "Política de privacidad", admin: "Acceso admin" },
   legal: {
     legalTitle: "Aviso legal", privacyTitle: "Política de privacidad",
